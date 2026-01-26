@@ -1,4 +1,4 @@
-const rate = 16580; // ubah ini kalau mau update kurs
+const rate = 16591; // ubah kalau mau update kurs
 
 const accounts = {
     "BINANCE": { uid:"1179095398", usn:"FNOVA" },
@@ -77,6 +77,11 @@ Saya sudah transfer USDT 💸
 
 Mohon dicek ya 🙏`;
 
-    const url = "https://m.me/100077369057743?text=" + encodeURIComponent(msg);
-    window.open(url, "_blank");
+    // COPY ke clipboard
+    navigator.clipboard.writeText(msg);
+
+    alert("Pesan sudah disalin. Silakan paste di Messenger 👌");
+
+    // Buka Messenger kamu
+    window.open("https://m.me/100077369057743", "_blank");
 });
