@@ -6,8 +6,8 @@
 <title>FNovaa CV</title>
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+
 <div class="container">
     <h1>🌌 FNovaa CV</h1>
     <div class="sub"><span class="usdt">USDT</span> → IDR</div>
@@ -15,35 +15,25 @@
     <div class="card">
 
         <label>Pilih Exchange</label>
-        <select id="exchange" onchange="updateExchange(); calculate();">
+        <select id="exchange">
             <option value="">-- Pilih --</option>
-            <option>BINANCE</option>
-            <option>OKX</option>
-            <option>GATE IO</option>
-            <option>DSB</option>
+            <option value="BINANCE">BINANCE</option>
+            <option value="OKX">OKX</option>
+            <option value="GATE">GATE IO</option>
         </select>
 
         <label>Nominal (<span class="usdt">USDT</span>)</label>
-        <input id="usdt" type="number" placeholder="Contoh: 25" oninput="calculate()">
+        <input id="usdt" type="number" placeholder="Contoh: 25">
 
-        <div class="result red">
-            IDR Kotor: <span id="idrGross">0</span>
-        </div>
-        <div class="result">
-            Fee: <span id="fee">0</span>
-        </div>
-        <div class="result green">
-            IDR Bersih: <span id="idrNet">0</span>
+        <div class="result red">IDR Kotor: <span id="idrGross">0</span></div>
+        <div class="result">Fee: <span id="fee">0</span></div>
+        <div class="result green">IDR Bersih: <span id="idrNet">0</span></div>
+
+        <div id="accountBox" class="account-box">
+            UID: - <br> USN: -
         </div>
 
-        <div id="accountBox">
-            <div class="account-box">UID: -<br>USN: -</div>
-        </div>
-
-        <button onclick="window.open('https://www.facebook.com/share/1Brms3TNxm/')">
-            Saya Sudah Transfer
-        </button>
-
+        <button id="orderBtn">Saya Sudah Transfer</button>
     </div>
 </div>
 
