@@ -2,15 +2,22 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>FNovaa CV</title>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-<div class="container">
-    <h1>🌌 FNovaa CV</h1>
-    <div class="subtitle"><span class="usdt">USDT</span> → IDR</div>
+<body>
+<div class="bg"></div>
+
+<div class="app">
+    <div class="logo">
+        🌌 <span>FNovaa CV</span>
+    </div>
+
+    <div class="pair">
+        <span class="usdt">USDT</span> → <span class="idr">IDR</span>
+    </div>
 
     <div class="card">
 
@@ -29,12 +36,12 @@
         <div class="result">Fee: <span id="fee">0</span></div>
         <div class="result green">IDR Bersih: <span id="bersih">0</span></div>
 
-        <div class="account">
+        <div class="box">
             <div>UID: <span id="uid">-</span></div>
             <div>USN: <span id="usn">-</span></div>
         </div>
 
-        <button onclick="goChat()">Saya Sudah Transfer</button>
+        <button id="btn">Saya Sudah Transfer</button>
 
     </div>
 </div>
