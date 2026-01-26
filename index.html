@@ -9,8 +9,13 @@
 <body>
 
 <div class="container">
-    <h1>🌌 FNovaa CV</h1>
-    <p class="subtitle"><span style="color:#26a17b;font-weight:bold;">USDT</span> → IDR</p>
+    <h1>FNovaa CV ✨</h1>
+
+    <div class="subtitle">
+        <span>USDT</span>
+        <span class="arrow">→</span>
+        <span>IDR</span>
+    </div>
 
     <div class="card">
 
@@ -22,12 +27,12 @@
             <option value="gate">GATE IO</option>
         </select>
 
-        <label>Nominal (<span style="color:#26a17b;">USDT</span>)</label>
+        <label>Nominal (<span class="usdt">USDT</span>)</label>
         <input type="number" id="usdt" placeholder="Contoh: 25">
 
         <div class="result">
-            <p>IDR Kotor: <span id="idr">0</span></p>
-            <p>FEE: <span id="tax">0</span></p>
+            <p>IDR Kotor: <span id="idr" class="kotor">0</span></p>
+            <p>Fee: <span id="tax">0</span></p>
             <p class="net">IDR Bersih: <span id="net">0</span></p>
         </div>
 

@@ -1,60 +1,70 @@
 body {
-    margin:0;
-    font-family: Arial;
-    background: radial-gradient(circle at top, #1a0033, #000);
-    color:white;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top, #2b0055, #050012);
+    color: white;
 }
+
 .container {
-    max-width:400px;
-    margin:auto;
-    padding:30px;
-    text-align:center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
 }
+
 h1 {
-    color:#8f5cff;
-    text-shadow:0 0 10px #8f5cff;
+    color: #b47cff;
+    text-shadow: 0 0 10px #8a2be2;
 }
+
+.subtitle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.arrow {
+    font-size: 22px;
+}
+
+.usdt {
+    color: #26a17b;
+    font-weight: bold;
+}
+
 .card {
-    background: rgba(255,255,255,0.05);
-    border-radius:15px;
-    padding:20px;
-    box-shadow:0 0 20px #4a00ff;
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    border-radius: 20px;
+    width: 300px;
+    box-shadow: 0 0 30px #6b00ff;
 }
-input, select {
-    width:100%;
-    padding:10px;
-    border-radius:10px;
-    border:none;
-    margin:10px 0;
-    background:#111;
-    color:white;
+
+select, input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    margin-top: 5px;
+    background: #111;
+    color: white;
 }
+
 .result {
-    margin:15px 0;
+    margin-top: 15px;
+    text-align: center;
 }
+
+.kotor {
+    color: #ff4d4d;
+}
+
 .net {
-    color:#00ffcc;
-    font-size:18px;
+    color: #26f0c4;
+    font-weight: bold;
 }
-.account {
-    background:#111;
-    padding:10px;
-    border-radius:10px;
-    margin-bottom:10px;
-}
-button {
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:10px;
-    background:#8f5cff;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-}
-button:hover {
-    background:#a57bff;
-}
+
 .acc-box {
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.1);
@@ -63,4 +73,16 @@ button:hover {
     color: #aaa;
     font-size: 14px;
     margin-top: 10px;
+    text-align: center;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 12px;
+    background: #7f5bff;
+    color: white;
+    font-size: 16px;
 }
