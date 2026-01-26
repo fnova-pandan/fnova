@@ -1,0 +1,66 @@
+body {
+    margin:0;
+    font-family: Arial;
+    background: radial-gradient(circle at top, #1a0033, #000);
+    color:white;
+}
+.container {
+    max-width:400px;
+    margin:auto;
+    padding:30px;
+    text-align:center;
+}
+h1 {
+    color:#8f5cff;
+    text-shadow:0 0 10px #8f5cff;
+}
+.card {
+    background: rgba(255,255,255,0.05);
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 0 20px #4a00ff;
+}
+input, select {
+    width:100%;
+    padding:10px;
+    border-radius:10px;
+    border:none;
+    margin:10px 0;
+    background:#111;
+    color:white;
+}
+.result {
+    margin:15px 0;
+}
+.net {
+    color:#00ffcc;
+    font-size:18px;
+}
+.account {
+    background:#111;
+    padding:10px;
+    border-radius:10px;
+    margin-bottom:10px;
+}
+button {
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#8f5cff;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+button:hover {
+    background:#a57bff;
+}
+.acc-box {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 10px;
+    border-radius: 10px;
+    color: #aaa;
+    font-size: 14px;
+    margin-top: 10px;
+}

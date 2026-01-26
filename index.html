@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>FNovaa CV â€“ USDT to IDR</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>ðŸŒŒ FNovaa CV</h1>
+    <p class="subtitle">USDT â†’ IDR</p>
+
+    <div class="card">
+        <label>Pilih Exchange</label>
+        <select id="exchange">
+            <option value="">-- Pilih --</option>
+            <option value="binance">BINANCE</option>
+            <option value="okx">OKX</option>
+            <option value="gate">GATE IO</option>
+        </select>
+
+        <label>Nominal (USDT)</label>
+        <input type="number" id="usdt" placeholder="Contoh: 25">
+
+        <div class="result">
+            <p>IDR Kotor: <span id="idr">0</span></p>
+            <p>Pajak: <span id="tax">0</span></p>
+            <p class="net">IDR Bersih: <span id="net">0</span></p>
+        </div>
+
+        <div class="account" id="account"></div>
+
+        <button id="order">Saya Sudah Transfer</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
