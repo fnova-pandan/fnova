@@ -1,5 +1,3 @@
-const feePer50k = 1500;
-
 const accounts = {
     binance: { uid: "1179095398", usn: "FNOVA" },
     okx: { uid: "775966960717997987", usn: "FNOVA" },
@@ -26,11 +24,15 @@ function calculate() {
     if (!marketRate) return;
 
     let idr = usdt * marketRate;
-    let fee = Math.ceil(idr / 50000) * feePer50k;
+
+    let feePercent = 6.5 - (idr / 100000 * 0.5);
+    if (feePercent < 2) feePercent = 2; // batas minimum 2%
+
+    let fee = idr * (feePercent / 100);
     let net = idr - fee;
 
     document.getElementById("idr").innerText = Math.floor(idr).toLocaleString();
-    document.getElementById("tax").innerText = fee.toLocaleString();
+    document.getElementById("tax").innerText = Math.floor(fee).toLocaleString();
     document.getElementById("net").innerText = Math.floor(net).toLocaleString();
 }
 
