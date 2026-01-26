@@ -2,38 +2,45 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FNovaa CV</title>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
+<body>
 <div class="container">
     <h1>🌌 FNovaa CV</h1>
-    <p class="subtitle"><span class="usdt">USDT</span> → IDR</p>
+    <div class="sub"> <span class="usdt">USDT</span> → IDR</div>
 
     <div class="card">
+
         <label>Pilih Exchange</label>
-        <select id="exchange" onchange="updateExchange()">
+        <select id="exchange" onchange="updateExchange(); calculate();">
             <option value="">-- Pilih --</option>
-            <option value="BINANCE">BINANCE</option>
-            <option value="GATE">GATE IO</option>
-            <option value="BYBIT">BYBIT</option>
+            <option>BINANCE</option>
+            <option>OKX</option>
+            <option>GATE IO</option>
+            <option>DSB</option>
         </select>
 
         <label>Nominal (<span class="usdt">USDT</span>)</label>
-        <input type="number" id="usdt" placeholder="Contoh: 25" oninput="hitung()">
+        <input id="usdt" type="number" placeholder="Contoh: 25" oninput="calculate()">
 
-        <div class="result red">IDR Kotor: <span id="kotor">0</span></div>
-        <div class="result">Fee: <span id="fee">0</span></div>
-        <div class="result green">IDR Bersih: <span id="bersih">0</span></div>
-
-        <div class="uidbox">
-            <div>UID: <span id="uid">-</span></div>
-            <div>USN: <span id="usn">-</span></div>
+        <div class="result red">
+            IDR Kotor: <span id="idrGross">0</span>
+        </div>
+        <div class="result">
+            Fee: <span id="fee">0</span>
+        </div>
+        <div class="result green">
+            IDR Bersih: <span id="idrNet">0</span>
         </div>
 
-        <button>Saya Sudah Transfer</button>
+        <div id="accountBox"></div>
+
+        <button onclick="window.open('https://www.facebook.com/share/1Brms3TNxm/')">
+            Saya Sudah Transfer
+        </button>
+
     </div>
 </div>
 
