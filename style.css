@@ -1,78 +1,85 @@
+*{
+    box-sizing:border-box;
+    font-family:Segoe UI, sans-serif;
+}
+
 body{
     margin:0;
-    font-family: 'Segoe UI', sans-serif;
-    background: radial-gradient(circle at top, #1b0035, #050010);
+    background:radial-gradient(circle at top,#2a0040,#05000a);
     color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
     min-height:100vh;
 }
 
 .container{
-    text-align:center;
-    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:30px 15px;
 }
 
 h1{
-    color:#b07bff;
+    margin:10px 0;
+    color:#b88cff;
     text-shadow:0 0 15px #8f5cff;
 }
 
-.sub{
+.subtitle{
     margin-bottom:20px;
+    font-size:18px;
 }
 
-.usdt{color:#26a17b;font-weight:bold;}
+.usdt{color:#00ffb3;}
 
 .card{
-    background:#12001f;
+    width:100%;
+    max-width:380px;
+    background:#0d0018;
     padding:20px;
-    border-radius:18px;
-    box-shadow:0 0 35px #7b3cff;
-    width:90%;
-    max-width:360px;
-    margin:auto;
+    border-radius:20px;
+    box-shadow:0 0 40px #6f2cff;
 }
 
 label{
     display:block;
-    text-align:left;
-    margin-top:10px;
+    margin-top:15px;
+    margin-bottom:5px;
     color:#aaa;
 }
 
 input,select{
     width:100%;
     padding:12px;
-    margin-top:6px;
-    border-radius:10px;
     border:none;
-    background:#1b0033;
+    border-radius:10px;
+    background:#1b002f;
     color:white;
     font-size:16px;
 }
 
-.result{margin-top:10px;}
-.red{color:#ff5a5a;}
-.green{color:#26f0c4;font-weight:bold;}
+.result{
+    margin-top:12px;
+    font-size:16px;
+}
 
-.account-box{
-    background:#1b1b1b;
-    padding:12px;
-    border-radius:10px;
+.red{color:#ff6b6b;}
+.green{color:#00ffb3;}
+
+.account{
     margin-top:15px;
+    background:#1b1b1b;
+    padding:10px;
+    border-radius:10px;
     color:#aaa;
     font-size:14px;
 }
 
 button{
-    margin-top:15px;
     width:100%;
-    padding:14px;
+    margin-top:15px;
+    padding:15px;
     border:none;
-    border-radius:12px;
-    background:linear-gradient(90deg,#7b3cff,#b07bff);
+    border-radius:15px;
+    background:#8f5cff;
     color:white;
     font-size:16px;
-}}
+}
