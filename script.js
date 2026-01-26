@@ -1,87 +1,120 @@
-const rate = 16591; // ubah kalau mau update kurs
+// ==========================
+// FNOVAA CV CONFIG
+// ==========================
+const rate = 16589; // ubah ini kalau mau update kurs manual
 
 const accounts = {
-    "BINANCE": { uid:"1179095398", usn:"FNOVA" },
-    "OKX": { uid:"775966960717997987", usn:"FNOVA" },
-    "GATE IO": { uid:"47713970", usn:"FNOVA" }
+    "BINANCE": { uid: "1179095398", usn: "FNOVA" },
+    "OKX": { uid: "775966960717997987", usn: "FNOVA" },
+    "GATE IO": { uid: "47713970", usn: "FNOVA" }
 };
 
+// ==========================
+// ELEMENTS
+// ==========================
 const usdtInput = document.getElementById("usdt");
 const exchange = document.getElementById("exchange");
+const kotorEl = document.getElementById("kotor");
+const feeEl = document.getElementById("fee");
+const bersihEl = document.getElementById("bersih");
+const uidEl = document.getElementById("uid");
+const usnEl = document.getElementById("usn");
+const btn = document.getElementById("btn");
 
+// ==========================
+// UTIL
+// ==========================
 function format(n){
     return Math.round(n).toLocaleString("id-ID");
 }
 
+// Fee:
+// < 50k = 10%
+// >= 50k = 8% turun 0.55% tiap 50k
+// floor 2%
 function getFeePercent(idr){
     if(idr < 50000) return 10;
+
     let blocks = Math.floor((idr - 50000) / 50000);
     let fee = 8 - (blocks * 0.55);
     if(fee < 2) fee = 2;
     return fee;
 }
 
+// ==========================
+// CALCULATE
+// ==========================
 function update(){
     const usdt = parseFloat(usdtInput.value);
+
     if(!usdt || usdt <= 0){
-        document.getElementById("kotor").innerText = "0";
-        document.getElementById("fee").innerText = "0";
-        document.getElementById("bersih").innerText = "0";
+        kotorEl.innerText = "0";
+        feeEl.innerText = "0";
+        bersihEl.innerText = "0";
         return;
     }
 
-    const kotor = usdt * rate;
+    // 1% spread
+    const kotor = usdt * rate * 0.99;
+
     const feePercent = getFeePercent(kotor);
     const fee = kotor * feePercent / 100;
     const bersih = kotor - fee;
 
-    document.getElementById("kotor").innerText = format(kotor);
-    document.getElementById("fee").innerText = format(fee);
-    document.getElementById("bersih").innerText = format(bersih);
+    kotorEl.innerText = format(kotor);
+    feeEl.innerText = format(fee);
+    bersihEl.innerText = format(bersih);
 }
 
+// ==========================
+// EVENTS
+// ==========================
 usdtInput.addEventListener("input", update);
 
 exchange.addEventListener("change", ()=>{
     const ex = exchange.value;
     if(accounts[ex]){
-        document.getElementById("uid").innerText = accounts[ex].uid;
-        document.getElementById("usn").innerText = accounts[ex].usn;
+        uidEl.innerText = accounts[ex].uid;
+        usnEl.innerText = accounts[ex].usn;
+    } else {
+        uidEl.innerText = "-";
+        usnEl.innerText = "-";
     }
 });
 
-document.getElementById("btn").addEventListener("click", ()=>{
+// ==========================
+// BUTTON: COPY DETAIL + OPEN FB
+// ==========================
+btn.addEventListener("click", ()=>{
     const usdt = usdtInput.value;
     const ex = exchange.value;
-    const kotor = document.getElementById("kotor").innerText;
-    const fee = document.getElementById("fee").innerText;
-    const bersih = document.getElementById("bersih").innerText;
 
     if(!usdt || !ex){
         alert("Isi nominal dan pilih exchange dulu");
         return;
     }
 
-    const msg = 
-`Halo FNOVAA CV 👋
+    const detail =
+`Exchange: ${ex}
+Nominal: ${usdt} USDT
+IDR Kotor: Rp ${kotorEl.innerText}
+Fee: Rp ${feeEl.innerText}
+IDR Bersih: Rp ${bersihEl.innerText}`;
 
-Saya sudah transfer USDT 💸
+    const ok = confirm(
+"Detail transaksi (akan dicopy):\n\n" + detail + "\n\nKlik OK untuk copy & buka Messenger."
+    );
 
-📌 Detail Transaksi:
-🏦 Exchange: ${ex}
-💲 Nominal: ${usdt} USDT
+    if(!ok) return;
 
-💰 IDR Kotor: Rp ${kotor}
-🧾 Fee: Rp ${fee}
-✅ IDR Bersih: Rp ${bersih}
+    // Copy hanya detail transaksi
+    const temp = document.createElement("textarea");
+    temp.value = detail;
+    document.body.appendChild(temp);
+    temp.select();
+    document.execCommand("copy");
+    document.body.removeChild(temp);
 
-Mohon dicek ya 🙏`;
-
-    // COPY ke clipboard
-    navigator.clipboard.writeText(msg);
-
-    alert("Pesan sudah disalin. Silakan paste di Messenger 👌");
-
-    // Buka Messenger kamu
+    // Buka Messenger FNOVAA
     window.open("https://m.me/100077369057743", "_blank");
 });
