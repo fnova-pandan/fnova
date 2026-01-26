@@ -1,80 +1,63 @@
-*{
-    box-sizing:border-box;
-    font-family: 'Segoe UI', sans-serif;
-}
-
 body{
     margin:0;
-    background:#080014;
+    background:#070010;
     color:white;
-    overflow-x:hidden;
-}
-
-.bg{
-    position:fixed;
-    inset:0;
-    background:radial-gradient(circle at top, #4b00ff33, #080014 70%);
-    z-index:-1;
+    font-family:Segoe UI, sans-serif;
 }
 
 .app{
     max-width:420px;
     margin:auto;
-    padding:25px 15px;
+    padding:20px;
 }
 
-.logo{
+h1{
     text-align:center;
-    font-size:32px;
-    font-weight:700;
     color:#b58cff;
-    text-shadow:0 0 20px #7f4cff;
+    text-shadow:0 0 15px #7f4cff;
 }
 
 .pair{
     text-align:center;
-    margin-top:8px;
-    font-size:18px;
+    margin-bottom:20px;
 }
 
-.usdt{ color:#00ffb3; }
-.idr{ color:white; }
+.usdt{color:#00ffb3;}
 
 .card{
     background:#120022;
-    border-radius:20px;
     padding:20px;
-    margin-top:25px;
-    box-shadow:0 0 40px #6b2cff;
+    border-radius:18px;
+    box-shadow:0 0 30px #6b2cff;
 }
 
 label{
     display:block;
-    margin-top:15px;
+    margin-top:12px;
     color:#aaa;
 }
 
 select,input{
     width:100%;
-    margin-top:6px;
     padding:12px;
     border-radius:10px;
-    background:#1a0033;
     border:none;
+    background:#1a0033;
     color:white;
     font-size:16px;
+    margin-top:5px;
 }
 
 .result{
-    margin-top:12px;
+    margin-top:10px;
     font-size:16px;
 }
 
-.red{ color:#ff5c5c; }
-.green{ color:#00ffb3; }
+.red{color:#ff6b6b;}
+.green{color:#00ffb3;}
 
 .box{
-    background:#1a1a1a;
+    background:#1b1b1b;
     padding:12px;
     border-radius:10px;
     margin-top:15px;
@@ -82,13 +65,12 @@ select,input{
 }
 
 button{
-    margin-top:18px;
     width:100%;
+    margin-top:15px;
     padding:14px;
     border:none;
     border-radius:14px;
     background:linear-gradient(90deg,#8f6bff,#6b2cff);
     color:white;
     font-size:16px;
-    font-weight:700;
 }
