@@ -2,44 +2,38 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FNovaa CV</title>
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <div class="container">
-    <h1>FNovaa CV  ✨</h1>
-
-    <div class="subtitle">
-        <span>USDT</span>
-        <span class="arrow">→</span>
-        <span>IDR</span>
-    </div>
+    <h1>🌌 FNovaa CV</h1>
+    <p class="subtitle"><span class="usdt">USDT</span> → IDR</p>
 
     <div class="card">
-
         <label>Pilih Exchange</label>
-        <select id="exchange">
+        <select id="exchange" onchange="updateExchange()">
             <option value="">-- Pilih --</option>
-            <option value="binance">Binance</option>
-            <option value="okx">Okx</option>
-            <option value="gate">Gate Io</option>
+            <option value="BINANCE">BINANCE</option>
+            <option value="GATE">GATE IO</option>
+            <option value="BYBIT">BYBIT</option>
         </select>
 
         <label>Nominal (<span class="usdt">USDT</span>)</label>
-        <input type="number" id="usdt" placeholder="Contoh: 25">
+        <input type="number" id="usdt" placeholder="Contoh: 25" oninput="hitung()">
 
-        <div class="result">
-            <p>IDR Kotor: <span id="idr" class="kotor">0</span></p>
-            <p>Fee: <span id="tax">0</span></p>
-            <p class="net">IDR Bersih: <span id="net">0</span></p>
+        <div class="result red">IDR Kotor: <span id="kotor">0</span></div>
+        <div class="result">Fee: <span id="fee">0</span></div>
+        <div class="result green">IDR Bersih: <span id="bersih">0</span></div>
+
+        <div class="uidbox">
+            <div>UID: <span id="uid">-</span></div>
+            <div>USN: <span id="usn">-</span></div>
         </div>
 
-        <div id="account"></div>
-
-        <button id="order">Saya Sudah Transfer</button>
-
+        <button>Saya Sudah Transfer</button>
     </div>
 </div>
 

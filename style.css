@@ -1,88 +1,91 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: radial-gradient(circle at top, #2b0055, #050012);
+    background: radial-gradient(circle at top, #2b0040, #050010);
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 50px;
+    text-align: center;
+    width: 100%;
 }
 
 h1 {
-    color: #b47cff;
-    text-shadow: 0 0 10px #8a2be2;
+    color: #a875ff;
+    text-shadow: 0 0 15px #a875ff;
 }
 
 .subtitle {
-    display: flex;
-    align-items: center;
-    gap: 12px;
     margin-bottom: 20px;
 }
 
-.arrow {
-    font-size: 22px;
-}
-
 .usdt {
-    color: #26a17b;
+    color: #00ff9c;
     font-weight: bold;
 }
 
 .card {
-    background: rgba(0,0,0,0.6);
+    background: #12001f;
     padding: 20px;
-    border-radius: 20px;
-    width: 300px;
-    box-shadow: 0 0 30px #6b00ff;
+    border-radius: 16px;
+    box-shadow: 0 0 30px #7b3cff;
+    width: 90%;
+    max-width: 360px;
+    margin: auto;
 }
 
-select, input {
+label {
+    display: block;
+    margin-top: 10px;
+    text-align: left;
+    color: #aaa;
+}
+
+input, select {
     width: 100%;
     padding: 12px;
+    margin-top: 6px;
     border-radius: 10px;
     border: none;
-    margin-top: 5px;
-    background: #111;
+    background: #1b0033;
     color: white;
+    font-size: 16px;
 }
 
 .result {
-    margin-top: 15px;
-    text-align: center;
+    margin-top: 10px;
 }
 
-.kotor {
-    color: #ff4d4d;
+.red {
+    color: #ff6b6b;
 }
 
-.net {
-    color: #26f0c4;
+.green {
+    color: #00ff9c;
     font-weight: bold;
 }
 
-.acc-box {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 10px;
-    border-radius: 10px;
+.uidbox {
+    background: #1b1b1b;
     color: #aaa;
+    padding: 12px;
+    border-radius: 10px;
+    margin-top: 15px;
     font-size: 14px;
-    margin-top: 10px;
-    text-align: center;
 }
 
 button {
-    width: 100%;
-    padding: 12px;
     margin-top: 15px;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, #7b3cff, #a875ff);
     border: none;
     border-radius: 12px;
-    background: #7f5bff;
     color: white;
     font-size: 16px;
+    cursor: pointer;
 }
