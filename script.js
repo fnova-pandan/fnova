@@ -1,7 +1,4 @@
-// ==========================
-// FNOVAA CV CONFIG
-// ==========================
-const rate = 16589; // ubah ini kalau mau update kurs manual
+const rate = 16589;
 
 const accounts = {
     "BINANCE": { uid: "1179095398", usn: "FNOVA" },
@@ -9,9 +6,6 @@ const accounts = {
     "GATE IO": { uid: "47713970", usn: "FNOVA" }
 };
 
-// ==========================
-// ELEMENTS
-// ==========================
 const usdtInput = document.getElementById("usdt");
 const exchange = document.getElementById("exchange");
 const kotorEl = document.getElementById("kotor");
@@ -21,29 +15,18 @@ const uidEl = document.getElementById("uid");
 const usnEl = document.getElementById("usn");
 const btn = document.getElementById("btn");
 
-// ==========================
-// UTIL
-// ==========================
 function format(n){
     return Math.round(n).toLocaleString("id-ID");
 }
 
-// Fee:
-// < 50k = 10%
-// >= 50k = 8% turun 0.55% tiap 50k
-// floor 2%
 function getFeePercent(idr){
     if(idr < 50000) return 10;
-
     let blocks = Math.floor((idr - 50000) / 50000);
     let fee = 8 - (blocks * 0.55);
     if(fee < 2) fee = 2;
     return fee;
 }
 
-// ==========================
-// CALCULATE
-// ==========================
 function update(){
     const usdt = parseFloat(usdtInput.value);
 
@@ -54,9 +37,7 @@ function update(){
         return;
     }
 
-    // 1% spread
     const kotor = usdt * rate * 0.99;
-
     const feePercent = getFeePercent(kotor);
     const fee = kotor * feePercent / 100;
     const bersih = kotor - fee;
@@ -66,9 +47,6 @@ function update(){
     bersihEl.innerText = format(bersih);
 }
 
-// ==========================
-// EVENTS
-// ==========================
 usdtInput.addEventListener("input", update);
 
 exchange.addEventListener("change", ()=>{
@@ -82,9 +60,6 @@ exchange.addEventListener("change", ()=>{
     }
 });
 
-// ==========================
-// BUTTON: COPY DETAIL + OPEN FB
-// ==========================
 btn.addEventListener("click", ()=>{
     const usdt = usdtInput.value;
     const ex = exchange.value;
@@ -101,13 +76,10 @@ IDR Kotor: Rp ${kotorEl.innerText}
 Fee: Rp ${feeEl.innerText}
 IDR Bersih: Rp ${bersihEl.innerText}`;
 
-    const ok = confirm(
-"Detail transaksi (akan dicopy):\n\n" + detail + "\n\nKlik OK untuk copy & buka Messenger."
-    );
+    const ok = confirm("Detail transaksi:\n\n" + detail + "\n\nKlik OK untuk copy & buka Messenger.");
 
     if(!ok) return;
 
-    // Copy hanya detail transaksi
     const temp = document.createElement("textarea");
     temp.value = detail;
     document.body.appendChild(temp);
@@ -115,6 +87,5 @@ IDR Bersih: Rp ${bersihEl.innerText}`;
     document.execCommand("copy");
     document.body.removeChild(temp);
 
-    // Buka Messenger FNOVAA
     window.open("https://m.me/100077369057743", "_blank");
 });
