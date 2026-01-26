@@ -1,8 +1,4 @@
-// ===============================
-// FNOVAA CV – LIVE USDT ENGINE
-// ===============================
-
-const SPREAD = 0.015; // 1.5% profit kamu
+const SPREAD = 0.015;
 
 const exchanges = {
     BINANCE: { uid: "1179095398", usn: "FNOVA" },
@@ -13,9 +9,6 @@ const exchanges = {
 
 let liveRate = 0;
 
-// ===============================
-// Ambil kurs USDT live (CORS-safe)
-// ===============================
 async function fetchRate() {
     try {
         const res = await fetch(
@@ -23,17 +16,14 @@ async function fetchRate() {
         );
         const data = await res.json();
         liveRate = parseFloat(data.price);
-    } catch (e) {
-        liveRate = 15800; // fallback aman
+    } catch {
+        liveRate = 15800;
     }
 }
 
 fetchRate();
 setInterval(fetchRate, 10000);
 
-// ===============================
-// Hitung fee dinamis
-// ===============================
 function getFeePercent(idr) {
     let steps = Math.floor(idr / 100000);
     let fee = 6.5 - (steps * 0.5);
@@ -41,9 +31,6 @@ function getFeePercent(idr) {
     return fee;
 }
 
-// ===============================
-// Update akun exchange
-// ===============================
 function updateExchange() {
     const ex = document.getElementById("exchange").value;
     const box = document.getElementById("accountBox");
@@ -55,19 +42,15 @@ function updateExchange() {
 
     box.innerHTML = `
         <div class="account-box">
-            <div>UID: ${exchanges[ex].uid}</div>
-            <div>USN: ${exchanges[ex].usn}</div>
+            UID: ${exchanges[ex].uid}<br>
+            USN: ${exchanges[ex].usn}
         </div>
     `;
 }
 
-// ===============================
-// Hitung konversi
-// ===============================
 function calculate() {
     const usdt = parseFloat(document.getElementById("usdt").value);
-
-    if (!usdt || usdt <= 0 || liveRate === 0) {
+    if (!usdt || liveRate === 0) {
         document.getElementById("idrGross").innerText = "0";
         document.getElementById("fee").innerText = "0";
         document.getElementById("idrNet").innerText = "0";
@@ -82,13 +65,10 @@ function calculate() {
     const net = gross - fee;
 
     document.getElementById("idrGross").innerText = formatIDR(gross);
-    document.getElementById("fee").innerText = formatIDR(fee) + ` (${feePercent.toFixed(1)}%)`;
+    document.getElementById("fee").innerText = formatIDR(fee);
     document.getElementById("idrNet").innerText = formatIDR(net);
 }
 
-// ===============================
-// Format Rupiah
-// ===============================
 function formatIDR(num) {
     return Math.floor(num).toLocaleString("id-ID");
 }
