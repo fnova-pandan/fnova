@@ -1,8 +1,19 @@
+* {
+  -webkit-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+  font-family: Segoe UI, sans-serif;
+}
+
+input, textarea {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
 body{
     margin:0;
     background:#070010;
     color:white;
-    font-family:Segoe UI, sans-serif;
 }
 
 .app{
