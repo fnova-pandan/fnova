@@ -1,5 +1,5 @@
 // ===============================
-// FNOVAA CV – LIVE RATE ENGINE
+// FNOVAA CV – LIVE USDT ENGINE
 // ===============================
 
 const SPREAD = 0.015; // 1.5% profit kamu
@@ -14,15 +14,17 @@ const exchanges = {
 let liveRate = 0;
 
 // ===============================
-// Ambil kurs USDT live dari Binance
+// Ambil kurs USDT live (CORS-safe)
 // ===============================
 async function fetchRate() {
     try {
-        const res = await fetch("https://api.binance.com/api/v3/ticker/price?symbol=USDTIDR");
+        const res = await fetch(
+            "https://api.allorigins.win/raw?url=https://api.binance.com/api/v3/ticker/price?symbol=USDTIDR"
+        );
         const data = await res.json();
         liveRate = parseFloat(data.price);
     } catch (e) {
-        liveRate = 15800; // fallback jika API mati
+        liveRate = 15800; // fallback aman
     }
 }
 
@@ -40,14 +42,14 @@ function getFeePercent(idr) {
 }
 
 // ===============================
-// Update Exchange UID
+// Update akun exchange
 // ===============================
 function updateExchange() {
     const ex = document.getElementById("exchange").value;
     const box = document.getElementById("accountBox");
 
     if (!ex || !exchanges[ex]) {
-        box.innerHTML = "";
+        box.innerHTML = `<div class="account-box">UID: -<br>USN: -</div>`;
         return;
     }
 
@@ -64,7 +66,8 @@ function updateExchange() {
 // ===============================
 function calculate() {
     const usdt = parseFloat(document.getElementById("usdt").value);
-    if (!usdt || usdt <= 0) {
+
+    if (!usdt || usdt <= 0 || liveRate === 0) {
         document.getElementById("idrGross").innerText = "0";
         document.getElementById("fee").innerText = "0";
         document.getElementById("idrNet").innerText = "0";
@@ -84,7 +87,7 @@ function calculate() {
 }
 
 // ===============================
-// Format rupiah
+// Format Rupiah
 // ===============================
 function formatIDR(num) {
     return Math.floor(num).toLocaleString("id-ID");
