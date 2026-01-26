@@ -1,57 +1,66 @@
 *{
     box-sizing:border-box;
-    font-family:Segoe UI, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 body{
     margin:0;
-    background:radial-gradient(circle at top,#2a0040,#05000a);
+    background:#080014;
     color:white;
-    min-height:100vh;
+    overflow-x:hidden;
 }
 
-.container{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    padding:30px 15px;
+.bg{
+    position:fixed;
+    inset:0;
+    background:radial-gradient(circle at top, #4b00ff33, #080014 70%);
+    z-index:-1;
 }
 
-h1{
-    margin:10px 0;
-    color:#b88cff;
-    text-shadow:0 0 15px #8f5cff;
+.app{
+    max-width:420px;
+    margin:auto;
+    padding:25px 15px;
 }
 
-.subtitle{
-    margin-bottom:20px;
+.logo{
+    text-align:center;
+    font-size:32px;
+    font-weight:700;
+    color:#b58cff;
+    text-shadow:0 0 20px #7f4cff;
+}
+
+.pair{
+    text-align:center;
+    margin-top:8px;
     font-size:18px;
 }
 
-.usdt{color:#00ffb3;}
+.usdt{ color:#00ffb3; }
+.idr{ color:white; }
 
 .card{
-    width:100%;
-    max-width:380px;
-    background:#0d0018;
-    padding:20px;
+    background:#120022;
     border-radius:20px;
-    box-shadow:0 0 40px #6f2cff;
+    padding:20px;
+    margin-top:25px;
+    box-shadow:0 0 40px #6b2cff;
 }
 
 label{
     display:block;
     margin-top:15px;
-    margin-bottom:5px;
     color:#aaa;
 }
 
-input,select{
+select,input{
     width:100%;
+    margin-top:6px;
     padding:12px;
-    border:none;
     border-radius:10px;
-    background:#1b002f;
+    background:#1a0033;
+    border:none;
     color:white;
     font-size:16px;
 }
@@ -61,25 +70,25 @@ input,select{
     font-size:16px;
 }
 
-.red{color:#ff6b6b;}
-.green{color:#00ffb3;}
+.red{ color:#ff5c5c; }
+.green{ color:#00ffb3; }
 
-.account{
-    margin-top:15px;
-    background:#1b1b1b;
-    padding:10px;
+.box{
+    background:#1a1a1a;
+    padding:12px;
     border-radius:10px;
+    margin-top:15px;
     color:#aaa;
-    font-size:14px;
 }
 
 button{
+    margin-top:18px;
     width:100%;
-    margin-top:15px;
-    padding:15px;
+    padding:14px;
     border:none;
-    border-radius:15px;
-    background:#8f5cff;
+    border-radius:14px;
+    background:linear-gradient(90deg,#8f6bff,#6b2cff);
     color:white;
     font-size:16px;
+    font-weight:700;
 }
