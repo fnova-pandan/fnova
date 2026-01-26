@@ -1,91 +1,78 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: radial-gradient(circle at top, #2b0040, #050010);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+body{
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, #1b0035, #050010);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
 }
 
-.container {
-    text-align: center;
-    width: 100%;
+.container{
+    text-align:center;
+    width:100%;
 }
 
-h1 {
-    color: #a875ff;
-    text-shadow: 0 0 15px #a875ff;
+h1{
+    color:#b07bff;
+    text-shadow:0 0 15px #8f5cff;
 }
 
-.subtitle {
-    margin-bottom: 20px;
+.sub{
+    margin-bottom:20px;
 }
 
-.usdt {
-    color: #00ff9c;
-    font-weight: bold;
+.usdt{color:#26a17b;font-weight:bold;}
+
+.card{
+    background:#12001f;
+    padding:20px;
+    border-radius:18px;
+    box-shadow:0 0 35px #7b3cff;
+    width:90%;
+    max-width:360px;
+    margin:auto;
 }
 
-.card {
-    background: #12001f;
-    padding: 20px;
-    border-radius: 16px;
-    box-shadow: 0 0 30px #7b3cff;
-    width: 90%;
-    max-width: 360px;
-    margin: auto;
+label{
+    display:block;
+    text-align:left;
+    margin-top:10px;
+    color:#aaa;
 }
 
-label {
-    display: block;
-    margin-top: 10px;
-    text-align: left;
-    color: #aaa;
+input,select{
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    border-radius:10px;
+    border:none;
+    background:#1b0033;
+    color:white;
+    font-size:16px;
 }
 
-input, select {
-    width: 100%;
-    padding: 12px;
-    margin-top: 6px;
-    border-radius: 10px;
-    border: none;
-    background: #1b0033;
-    color: white;
-    font-size: 16px;
+.result{margin-top:10px;}
+.red{color:#ff5a5a;}
+.green{color:#26f0c4;font-weight:bold;}
+
+.account-box{
+    background:#1b1b1b;
+    padding:12px;
+    border-radius:10px;
+    margin-top:15px;
+    color:#aaa;
+    font-size:14px;
 }
 
-.result {
-    margin-top: 10px;
-}
-
-.red {
-    color: #ff6b6b;
-}
-
-.green {
-    color: #00ff9c;
-    font-weight: bold;
-}
-
-.uidbox {
-    background: #1b1b1b;
-    color: #aaa;
-    padding: 12px;
-    border-radius: 10px;
-    margin-top: 15px;
-    font-size: 14px;
-}
-
-button {
-    margin-top: 15px;
-    width: 100%;
-    padding: 14px;
-    background: linear-gradient(90deg, #7b3cff, #a875ff);
-    border: none;
-    border-radius: 12px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-}
+button{
+    margin-top:15px;
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(90deg,#7b3cff,#b07bff);
+    color:white;
+    font-size:16px;
+}}
