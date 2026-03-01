@@ -4,49 +4,139 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FNOVAA CV</title>
-<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+    margin:0;
+    font-family:sans-serif;
+    background: linear-gradient(180deg,#1a0033,#000);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.card{
+    width:340px;
+    background:#1e293b;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 0 25px rgba(255,215,0,0.2);
+}
+
+.title{
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    color:#ffd700;
+    margin-bottom:15px;
+}
+
+label{
+    font-size:14px;
+    opacity:0.8;
+}
+
+select,input{
+    width:100%;
+    padding:12px;
+    margin-top:5px;
+    margin-bottom:15px;
+    border-radius:10px;
+    border:2px solid #ffd700;
+    background:#334155;
+    color:white;
+    font-size:16px;
+}
+
+.result-box{
+    background:#0f172a;
+    padding:15px;
+    border-radius:15px;
+    text-align:center;
+    margin-top:10px;
+}
+
+.hasil{
+    font-size:28px;
+    color:#22c55e;
+    font-weight:bold;
+}
+
+.fee{
+    margin-top:5px;
+    font-size:14px;
+    opacity:0.8;
+}
+
+.kirim{
+    margin-top:10px;
+    font-size:14px;
+}
+
+.uid-box{
+    background:#020617;
+    padding:12px;
+    border-radius:12px;
+    margin-top:15px;
+    text-align:center;
+}
+
+button{
+    width:100%;
+    margin-top:15px;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#ffd700;
+    color:black;
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="card">
 
-    <h1>✨ FNOVAA Convert</h1>
+<div class="title">💰 FNOVAA Convert</div>
 
-    <label>Pilih Exchange</label>
-    <select id="exchange">
-        <option value="">-- Pilih --</option>
-        <option>BINANCE</option>
-        <option>OKX</option>
-        <option>GATE IO</option>
-    </select>
+<label>Pilih Exchange</label>
+<select id="exchange">
+<option value="">-- Pilih --</option>
+<option value="BINANCE">🔶 BINANCE</option>
+<option value="OKX">🔷 OKX</option>
+<option value="GATE IO">🔵 GATE IO</option>
+<option value="TOKOCRYPTO">🟢 TOKOCRYPTO</option>
+<option value="MEXC">💠 MEXC</option>
+</select>
 
-    <label>Nominal (USDT)</label>
-    <input type="number" id="usdt" placeholder="Contoh: 7">
+<label>Nominal (USDT)</label>
+<input type="number" id="usdt" placeholder="Masukkan USDT">
 
-    <div class="result">
+<div class="result-box">
+<div class="hasil">Rp <span id="bersih">0</span></div>
+<div class="fee">Fee: Rp <span id="fee">0</span></div>
+<div class="kirim">
+Silakan kirim <b><span id="usdtText">0</span> USDT</b>
+</div>
+</div>
 
-        <p class="title">Hasil Convert (Rp)</p>
-        <h2>Rp <span id="bersih">0</span></h2>
+<div class="uid-box">
+UID: <span id="uid">-</span><br>
+USN: <span id="usn">FNOVA</span>
+</div>
 
-        <p class="detail">
-        Total = <span id="usdtText">0</span> USDT × 16.500  
-        - Fee (Rp <span id="fee">0</span>)
-        </p>
-
-        <div class="account">
-            <p>UID:</p>
-            <b id="uid">-</b>
-            <p>USN:</p>
-            <b id="usn">-</b>
-        </div>
-
-    </div>
-
-    <button id="btn">Saya Sudah Transfer</button>
+<button id="btn">Saya Sudah Transfer</button>
 
 </div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
