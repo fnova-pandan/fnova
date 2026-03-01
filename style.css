@@ -1,133 +1,130 @@
-body{
+*{
+box-sizing:border-box;
 margin:0;
-font-family:system-ui;
-background: radial-gradient(circle at top, #1a0b3b, #050014);
+padding:0;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background: radial-gradient(circle at top,#1e3a8a,#020617);
 min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
+padding:20px;
 color:white;
 }
 
-.container{
-width:90%;
-max-width:420px;
-background:#1e2a3d;
+.card{
+width:100%;
+max-width:400px;
+background:rgba(30,41,59,0.95);
 border-radius:24px;
-padding:24px;
-box-shadow:0 0 30px rgba(59,130,246,0.25);
+padding:26px;
+box-shadow:0 0 40px rgba(0,150,255,0.15);
 }
-
-/* ================= TITLE ================= */
 
 .title{
 text-align:center;
-font-size:24px;
+font-size:26px;
 font-weight:600;
 color:#60a5fa;
-margin-bottom:20px;
+margin-bottom:25px;
 }
-
-/* ================= FIELD ================= */
 
 .field{
-margin-bottom:16px;
+margin-bottom:18px;
 }
 
-label{
+.field label{
 display:block;
-font-size:14px;
 margin-bottom:6px;
-opacity:.8;
+color:#cbd5f5;
+font-size:14px;
 }
 
-/* ================= INPUT & SELECT ================= */
-
-select,
+/* INPUT */
 input{
 width:100%;
 height:52px;
-padding:0 16px;
 border-radius:14px;
-border:2px solid #facc15;
+border:2px solid #334155;
 background:#3b4a5e;
+color:white;
+padding:0 16px;
+font-size:16px;
+outline:none;
+}
+
+/* SELECT WRAP FIX ANDROID */
+.select-wrap{
+height:52px;
+border:2px solid #334155;
+border-radius:14px;
+background:#3b4a5e;
+display:flex;
+align-items:center;
+padding:0 16px;
+}
+
+.select-wrap select{
+width:100%;
+height:100%;
+border:none;
+background:transparent;
 color:white;
 font-size:16px;
 outline:none;
-box-sizing:border-box;
-transition:0.2s;
-}
-
-/* Android fix */
-select{
 appearance:none;
 -webkit-appearance:none;
 -moz-appearance:none;
-line-height:52px;
 }
 
-/* Hover effect */
-select:focus,
-input:focus{
-border-color:#60a5fa;
-box-shadow:0 0 12px rgba(96,165,250,0.4);
-}
-
-/* ================= RESULT BOX ================= */
-
+/* RESULT BOX */
 .result{
-margin-top:18px;
-background:#0f172a;
-border-radius:18px;
-padding:20px;
-text-align:center;
-}
-
-.result .idr{
-font-size:28px;
-color:#4ade80;
-font-weight:600;
-}
-
-.result .fee{
-font-size:14px;
-opacity:.8;
-margin-top:6px;
-}
-
-.result .send{
-margin-top:6px;
-font-size:15px;
-}
-
-/* ================= UID BOX ================= */
-
-.uidbox{
-margin-top:16px;
-background:#020617;
-border-radius:16px;
-padding:14px;
-text-align:center;
-font-size:14px;
-}
-
-/* ================= BUTTON ================= */
-
-button{
 margin-top:20px;
-width:100%;
-height:52px;
+background:#020617;
+padding:20px;
+border-radius:18px;
+text-align:center;
+}
+
+.amount{
+font-size:32px;
+color:#22c55e;
+font-weight:bold;
+}
+
+.fee{
+margin-top:4px;
+color:#94a3b8;
+}
+
+.send{
+margin-top:4px;
+color:#e2e8f0;
+}
+
+/* UID BOX */
+.uidbox{
+margin-top:15px;
+background:#020617;
+padding:16px;
 border-radius:16px;
+text-align:center;
+color:#cbd5f5;
+}
+
+/* BUTTON */
+button{
+width:100%;
+margin-top:20px;
+height:54px;
 border:none;
-font-size:16px;
-font-weight:600;
+border-radius:18px;
 background:linear-gradient(90deg,#3b82f6,#60a5fa);
 color:white;
+font-size:16px;
+font-weight:600;
 cursor:pointer;
-transition:0.2s;
-}
-
-button:hover{
-transform:scale(1.02);
-box-shadow:0 0 15px rgba(96,165,250,0.5);
 }
