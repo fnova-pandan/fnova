@@ -3,98 +3,91 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FNOVAA CV</title>
+
+<title>Fnova Convert</title>
 
 <style>
 
-body{
-    margin:0;
-    font-family:sans-serif;
-    background: linear-gradient(180deg,#1a0033,#000);
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg,#2a004f,#000);
+  padding:20px;
 }
 
-.card{
-    width:340px;
-    background:#1e293b;
-    border-radius:20px;
-    padding:20px;
-    box-shadow:0 0 25px rgba(255,215,0,0.2);
+.card {
+  background:#1e2d44;
+  border-radius:25px;
+  padding:20px;
+  max-width:400px;
+  margin:auto;
+  box-shadow:0 0 25px rgba(255,255,0,0.2);
 }
 
-.title{
-    text-align:center;
-    font-size:24px;
-    font-weight:bold;
-    color:#ffd700;
-    margin-bottom:15px;
+h1 {
+  text-align:center;
+  color:gold;
 }
 
-label{
-    font-size:14px;
-    opacity:0.8;
+label {
+  color:#ccc;
+  display:block;
+  margin-top:15px;
 }
 
-select,input{
-    width:100%;
-    padding:12px;
-    margin-top:5px;
-    margin-bottom:15px;
-    border-radius:10px;
-    border:2px solid #ffd700;
-    background:#334155;
-    color:white;
-    font-size:16px;
+select, input {
+  width:100%;
+  padding:12px;
+  border-radius:15px;
+  border:2px solid gold;
+  background:#2e3e56;
+  color:white;
+  margin-top:5px;
 }
 
-.result-box{
-    background:#0f172a;
-    padding:15px;
-    border-radius:15px;
-    text-align:center;
-    margin-top:10px;
+.result-box {
+  background:#081a2f;
+  border-radius:20px;
+  padding:20px;
+  text-align:center;
+  margin-top:20px;
 }
 
-.hasil{
-    font-size:28px;
-    color:#22c55e;
-    font-weight:bold;
+.result-box h2 {
+  color:#00ff88;
+  font-size:28px;
+  margin-bottom:10px;
 }
 
-.fee{
-    margin-top:5px;
-    font-size:14px;
-    opacity:0.8;
+.calc-text {
+  color:#ccc;
+  font-size:14px;
+  margin-bottom:10px;
 }
 
-.kirim{
-    margin-top:10px;
-    font-size:14px;
+.instruction {
+  color:#eee;
+  font-size:14px;
+  margin:6px 0;
 }
 
-.uid-box{
-    background:#020617;
-    padding:12px;
-    border-radius:12px;
-    margin-top:15px;
-    text-align:center;
+.uid-box {
+  background:#000c22;
+  padding:15px;
+  border-radius:15px;
+  text-align:center;
+  margin-top:15px;
+  color:white;
 }
 
-button{
-    width:100%;
-    margin-top:15px;
-    padding:14px;
-    border:none;
-    border-radius:12px;
-    background:#ffd700;
-    color:black;
-    font-weight:bold;
-    font-size:16px;
-    cursor:pointer;
+button {
+  width:100%;
+  margin-top:20px;
+  padding:15px;
+  background:gold;
+  border:none;
+  border-radius:20px;
+  font-weight:bold;
+  font-size:16px;
 }
 
 </style>
@@ -104,45 +97,77 @@ button{
 
 <div class="card">
 
-<div class="title">💵 Fnovaa Convert</div>
+<h1>💵 Fnovaa Convert</h1>
 
-<div class="field">
 <label>Pilih Exchange</label>
-<div class="select-wrap">
-<select id="exchange">
-<option value="">-- Pilih --</option>
-<option value="BINANCE">🔶 BINANCE</option>
-<option value="OKX">🔷 OKX</option>
-<option value="GATE">🔵 GATE IO</option>
-<option value="TOKO">🟢 TOKOCRYPTO</option>
-<option value="MEXC">💠 MEXC</option>
+<select id="exchangeSelect" onchange="updateResult()">
+  <option value="">-- Pilih --</option>
+  <option>Binance</option>
+  <option>Tokocrypto</option>
+  <option>OKX</option>
+  <option>Gate.io</option>
+  <option>MEXC</option>
 </select>
-</div>
-</div>
 
 <label>Nominal (USDT)</label>
-<input type="number" id="usdt" placeholder="Masukkan USDT">
+<input type="number" id="usdtInput" placeholder="Masukkan USDT" oninput="updateResult()">
 
 <div class="result-box">
-<div class="hasil">Rp <span id="bersih">0</span></div>
-<div class="fee">Fee: Rp <span id="fee">0</span></div>
-<div class="kirim">
-Silakan kirim usdt dan send payment setelah click saya sudah transfer<b><span id="usdtText">0</span> USDT</b>
-</div>
+  <h2>Rp <span id="idrTotal">0</span></h2>
+
+  <p class="calc-text">
+    Total = 
+    <span id="usdtAmount">0</span> USDT × 16,600 
+    - Fee (<span id="feeAmount">3.000</span>)
+  </p>
+
+  <p class="instruction">
+    Silakan kirim <b><span id="usdtSend">0</span> USD</b> ke 
+    <b><span id="exchangeName">EXCHANGE</span></b> di bawah ini.
+  </p>
+
+  <p class="instruction">
+    Setelah transfer, screenshot bukti pembayaran dan pencet 
+    <b>"Saya sudah transfer"</b> untuk konfirmasi
+    (sekalian juga send payment).
+  </p>
 </div>
 
 <div class="uid-box">
-UID: <span id="uid">-</span><br>
-USN: <span id="usn">FNOVA</span>
+  UID: - <br>
+  USN: FNOVA
 </div>
 
-<button id="btn">Saya Sudah Transfer</button>
+<button>Saya Sudah Transfer</button>
 
 </div>
 
-<script src="script.js"></script>
+<script>
+
+let rate = 16600;
+let fee = 3000;
+
+function updateResult() {
+
+  let usdt = document.getElementById("usdtInput").value || 0;
+  let exchange = document.getElementById("exchangeSelect");
+
+  let exchangeText = exchange.options[exchange.selectedIndex].text || "EXCHANGE";
+
+  let total = (usdt * rate) - fee;
+
+  document.getElementById("idrTotal").innerText =
+    Number(total).toLocaleString("id-ID");
+
+  document.getElementById("usdtAmount").innerText = usdt;
+  document.getElementById("usdtSend").innerText = usdt;
+  document.getElementById("feeAmount").innerText =
+    fee.toLocaleString("id-ID");
+
+  document.getElementById("exchangeName").innerText = exchangeText;
+}
+
+</script>
 
 </body>
 </html>
-
-
