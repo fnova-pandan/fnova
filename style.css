@@ -1,83 +1,133 @@
 body{
-    margin:0;
-    font-family:sans-serif;
-    background:linear-gradient(135deg,#0b0020,#1c0040);
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    height:100vh;
+margin:0;
+font-family:system-ui;
+background: radial-gradient(circle at top, #1a0b3b, #050014);
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
 }
 
 .container{
-    width:90%;
-    max-width:380px;
-    background:#1b2030;
-    padding:25px;
-    border-radius:18px;
-    box-shadow:0 0 25px #6f00ff55;
-    text-align:center;
+width:90%;
+max-width:420px;
+background:#1e2a3d;
+border-radius:24px;
+padding:24px;
+box-shadow:0 0 30px rgba(59,130,246,0.25);
 }
 
-h1{
-    color:#ffd700;
-    margin-bottom:20px;
+/* ================= TITLE ================= */
+
+.title{
+text-align:center;
+font-size:24px;
+font-weight:600;
+color:#60a5fa;
+margin-bottom:20px;
+}
+
+/* ================= FIELD ================= */
+
+.field{
+margin-bottom:16px;
 }
 
 label{
-    display:block;
-    text-align:left;
-    margin-top:10px;
-    font-size:14px;
+display:block;
+font-size:14px;
+margin-bottom:6px;
+opacity:.8;
 }
 
-select,input{
-    width:100%;
-    padding:12px;
-    margin-top:5px;
-    border-radius:10px;
-    border:none;
-    background:#2b3248;
-    color:white;
-    font-size:16px;
+/* ================= INPUT & SELECT ================= */
+
+select,
+input{
+width:100%;
+height:52px;
+padding:0 16px;
+border-radius:14px;
+border:2px solid #facc15;
+background:#3b4a5e;
+color:white;
+font-size:16px;
+outline:none;
+box-sizing:border-box;
+transition:0.2s;
 }
+
+/* Android fix */
+select{
+appearance:none;
+-webkit-appearance:none;
+-moz-appearance:none;
+line-height:52px;
+}
+
+/* Hover effect */
+select:focus,
+input:focus{
+border-color:#60a5fa;
+box-shadow:0 0 12px rgba(96,165,250,0.4);
+}
+
+/* ================= RESULT BOX ================= */
 
 .result{
-    background:#2b3248;
-    margin-top:20px;
-    padding:20px;
-    border-radius:15px;
+margin-top:18px;
+background:#0f172a;
+border-radius:18px;
+padding:20px;
+text-align:center;
 }
 
-.title{
-    opacity:.7;
+.result .idr{
+font-size:28px;
+color:#4ade80;
+font-weight:600;
 }
 
-h2{
-    color:#5fff9c;
-    margin:10px 0;
-    font-size:32px;
+.result .fee{
+font-size:14px;
+opacity:.8;
+margin-top:6px;
 }
 
-.detail{
-    font-size:13px;
-    opacity:.7;
+.result .send{
+margin-top:6px;
+font-size:15px;
 }
 
-.account{
-    margin-top:15px;
-    background:#1b2030;
-    padding:12px;
-    border-radius:10px;
+/* ================= UID BOX ================= */
+
+.uidbox{
+margin-top:16px;
+background:#020617;
+border-radius:16px;
+padding:14px;
+text-align:center;
+font-size:14px;
 }
+
+/* ================= BUTTON ================= */
 
 button{
-    margin-top:20px;
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:12px;
-    background:linear-gradient(90deg,#7a00ff,#c66bff);
-    color:white;
-    font-size:16px;
+margin-top:20px;
+width:100%;
+height:52px;
+border-radius:16px;
+border:none;
+font-size:16px;
+font-weight:600;
+background:linear-gradient(90deg,#3b82f6,#60a5fa);
+color:white;
+cursor:pointer;
+transition:0.2s;
+}
+
+button:hover{
+transform:scale(1.02);
+box-shadow:0 0 15px rgba(96,165,250,0.5);
 }
