@@ -1,7 +1,7 @@
 // ==========================
 // CONFIG
 // ==========================
-const rate = 16600;
+const rate = 16610;
 
 const accounts = {
     "BINANCE": { uid: "1179095398", usn: "FNOVA" },
@@ -119,4 +119,5 @@ IDR Bersih: Rp ${bersih}`;
     window.open("https://m.me/100077369057743", "_blank");
 
 });
+
 
