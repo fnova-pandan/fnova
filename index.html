@@ -3,39 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FNovaa CV</title>
+<title>FNOVAA CV</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="app">
-    <h1>🌌 FNovaa CV</h1>
-    <div class="pair"><span class="usdt">USDT</span> → IDR</div>
+<div class="container">
 
-    <div class="card">
+    <h1>✨ FNOVAA Convert</h1>
 
-        <label>Pilih Exchange</label>
-        <select id="exchange">
-            <option value="">-- Pilih --</option>
-            <option value="BINANCE">BINANCE</option>
-            <option value="OKX">OKX</option>
-            <option value="GATE IO">GATE IO</option>
-        </select>
+    <label>Pilih Exchange</label>
+    <select id="exchange">
+        <option value="">-- Pilih --</option>
+        <option>BINANCE</option>
+        <option>OKX</option>
+        <option>GATE IO</option>
+    </select>
 
-        <label>Nominal (<span class="usdt">USDT</span>)</label>
-        <input id="usdt" type="number" placeholder="Contoh: 25">
+    <label>Nominal (USDT)</label>
+    <input type="number" id="usdt" placeholder="Contoh: 7">
 
-        <div class="result red">IDR Kotor: <span id="kotor">0</span></div>
-        <div class="result">Fee: <span id="fee">0</span></div>
-        <div class="result green">IDR Bersih: <span id="bersih">0</span></div>
+    <div class="result">
 
-        <div class="box">
-            <div>UID: <span id="uid">-</span></div>
-            <div>USN: <span id="usn">-</span></div>
+        <p class="title">Hasil Convert (Rp)</p>
+        <h2>Rp <span id="bersih">0</span></h2>
+
+        <p class="detail">
+        Total = <span id="usdtText">0</span> USDT × 16.500  
+        - Fee (Rp <span id="fee">0</span>)
+        </p>
+
+        <div class="account">
+            <p>UID:</p>
+            <b id="uid">-</b>
+            <p>USN:</p>
+            <b id="usn">-</b>
         </div>
 
-        <button id="btn">Saya Sudah Transfer</button>
     </div>
+
+    <button id="btn">Saya Sudah Transfer</button>
+
 </div>
 
 <script src="script.js"></script>
