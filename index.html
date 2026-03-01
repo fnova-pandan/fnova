@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fnovaa CV</title>
 
+<!-- FONT PREMIUM -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
 <style>
 body{
 margin:0;
@@ -27,11 +30,20 @@ max-width:340px;
 box-shadow:0 0 30px rgba(59,130,246,0.25);
 }
 
+/* TITLE UPGRADE */
 .title{
 text-align:center;
-font-size:24px;
+font-size:26px;
+font-family:'Poppins',sans-serif;
+font-weight:600;
+letter-spacing:1px;
 color:#60a5fa;
-margin-bottom:20px;
+margin-bottom:22px;
+text-shadow:0 0 12px rgba(96,165,250,0.5);
+}
+
+.title span{
+color:#93c5fd;
 }
 
 .field{
@@ -97,7 +109,7 @@ cursor:pointer;
 
 <div class="card">
 
-<div class="title">Fnovaa CV</div>
+<div class="title"><span>Fnovaa</span> CV</div>
 
 <div class="field">
 <label>Pilih Exchange</label>
@@ -119,7 +131,7 @@ cursor:pointer;
 <div class="result">
 <h2 id="hasil">Rp 0</h2>
 <div>Fee: Rp <span id="fee">0</span></div>
-<div style="margin-top:5px">Silakan Kirim <b><span id="kirim">0</span> USDT</b></div>
+<div style="margin-top:5px">Silakan kirim <b><span id="kirim">0</span> USDT</b></div>
 </div>
 
 <div class="uidbox">
@@ -133,10 +145,8 @@ USN: FNOVA
 
 <script>
 
-// RATE FIX
-const rate = 16600;
+const rate = 16500;
 
-// UID
 const accounts = {
 "BINANCE":"1179095398",
 "OKX":"775966960717997987",
@@ -152,18 +162,15 @@ const feeEl = document.getElementById("fee");
 const uidEl = document.getElementById("uid");
 const kirim = document.getElementById("kirim");
 
-// FORMAT
 function format(n){
 return Math.round(n).toLocaleString("id-ID");
 }
 
-// FEE RULE
 function getFee(usdt){
 let block = Math.ceil(usdt/3);
 return 2000 + (block-1)*500;
 }
 
-// UPDATE
 function update(){
 let usdt = parseFloat(usdtInput.value);
 if(!usdt){
@@ -184,14 +191,11 @@ kirim.innerText = usdt;
 
 usdtInput.addEventListener("input", update);
 
-// UID UPDATE
 exchange.addEventListener("change", ()=>{
 uidEl.innerText = accounts[exchange.value] || "-";
 });
 
-// BUTTON
 document.getElementById("btn").addEventListener("click", ()=>{
-
 let usdt = usdtInput.value;
 let ex = exchange.value;
 
@@ -208,8 +212,8 @@ Fee: Rp ${feeEl.innerText}`;
 
 navigator.clipboard.writeText(detail);
 window.open("https://m.me/100077369057743","_blank");
-
 });
+
 </script>
 
 </body>
