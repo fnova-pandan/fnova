@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Fnova Convert</title>
 
 <style>
@@ -118,7 +117,7 @@ button {
   <p class="calc-text">
     Total = 
     <span id="usdtAmount">0</span> USDT × 16,600 
-    - Fee (<span id="feeAmount">3.000</span>)
+    - Fee (<span id="feeAmount">0</span>)
   </p>
 
   <p class="instruction">
@@ -145,19 +144,34 @@ button {
 <script>
 
 let rate = 16600;
-let fee = 3000;
+
+// fee naik tiap 3 USDT
+function getFee(usdt){
+  if(usdt <= 0) return 0;
+  return 2000 + (Math.ceil(usdt / 3) - 1) * 500;
+}
 
 function updateResult() {
 
-  let usdt = document.getElementById("usdtInput").value || 0;
+  let usdt = Number(document.getElementById("usdtInput").value);
   let exchange = document.getElementById("exchangeSelect");
+
+  if(!usdt || usdt <= 0){
+    document.getElementById("idrTotal").innerText = "0";
+    document.getElementById("usdtAmount").innerText = "0";
+    document.getElementById("usdtSend").innerText = "0";
+    document.getElementById("feeAmount").innerText = "0";
+    document.getElementById("exchangeName").innerText = "EXCHANGE";
+    return;
+  }
+
+  let fee = getFee(usdt);
+  let total = (usdt * rate) - fee;
 
   let exchangeText = exchange.options[exchange.selectedIndex].text || "EXCHANGE";
 
-  let total = (usdt * rate) - fee;
-
   document.getElementById("idrTotal").innerText =
-    Number(total).toLocaleString("id-ID");
+    total.toLocaleString("id-ID");
 
   document.getElementById("usdtAmount").innerText = usdt;
   document.getElementById("usdtSend").innerText = usdt;
