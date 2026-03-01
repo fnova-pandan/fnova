@@ -1,4 +1,4 @@
-const rate = 16589;
+const rate = 16500;
 
 const accounts = {
     "BINANCE": { uid: "1179095398", usn: "FNOVA" },
@@ -19,12 +19,12 @@ function format(n){
     return Math.round(n).toLocaleString("id-ID");
 }
 
-function getFeePercent(idr){
-    if(idr < 50000) return 10;
-    let blocks = Math.floor((idr - 50000) / 50000);
-    let fee = 8 - (blocks * 0.55);
-    if(fee < 2) fee = 2;
-    return fee;
+// Fee kelipatan 3 USDT
+function getFee(usdt){
+    if(usdt <= 3) return 2000;
+
+    let tier = Math.floor((usdt - 1) / 3);
+    return 2000 + (tier * 500);
 }
 
 function update(){
@@ -37,9 +37,8 @@ function update(){
         return;
     }
 
-    const kotor = usdt * rate * 0.99;
-    const feePercent = getFeePercent(kotor);
-    const fee = kotor * feePercent / 100;
+    const kotor = usdt * rate;
+    const fee = getFee(usdt);
     const bersih = kotor - fee;
 
     kotorEl.innerText = format(kotor);
