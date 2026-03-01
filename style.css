@@ -1,87 +1,83 @@
-* {
-  -webkit-user-select: none;
-  user-select: none;
-  box-sizing: border-box;
-  font-family: Segoe UI, sans-serif;
-}
-
-input, textarea {
-  -webkit-user-select: text;
-  user-select: text;
-}
-
 body{
     margin:0;
-    background:#070010;
+    font-family:sans-serif;
+    background:linear-gradient(135deg,#0b0020,#1c0040);
     color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:100vh;
 }
 
-.app{
-    max-width:420px;
-    margin:auto;
-    padding:20px;
+.container{
+    width:90%;
+    max-width:380px;
+    background:#1b2030;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 0 25px #6f00ff55;
+    text-align:center;
 }
 
 h1{
-    text-align:center;
-    color:#b58cff;
-    text-shadow:0 0 15px #7f4cff;
-}
-
-.pair{
-    text-align:center;
+    color:#ffd700;
     margin-bottom:20px;
-}
-
-.usdt{color:#00ffb3;}
-
-.card{
-    background:#120022;
-    padding:20px;
-    border-radius:18px;
-    box-shadow:0 0 30px #6b2cff;
 }
 
 label{
     display:block;
-    margin-top:12px;
-    color:#aaa;
+    text-align:left;
+    margin-top:10px;
+    font-size:14px;
 }
 
 select,input{
     width:100%;
     padding:12px;
+    margin-top:5px;
     border-radius:10px;
     border:none;
-    background:#1a0033;
+    background:#2b3248;
     color:white;
     font-size:16px;
-    margin-top:5px;
 }
 
 .result{
-    margin-top:10px;
-    font-size:16px;
+    background:#2b3248;
+    margin-top:20px;
+    padding:20px;
+    border-radius:15px;
 }
 
-.red{color:#ff6b6b;}
-.green{color:#00ffb3;}
+.title{
+    opacity:.7;
+}
 
-.box{
-    background:#1b1b1b;
+h2{
+    color:#5fff9c;
+    margin:10px 0;
+    font-size:32px;
+}
+
+.detail{
+    font-size:13px;
+    opacity:.7;
+}
+
+.account{
+    margin-top:15px;
+    background:#1b2030;
     padding:12px;
     border-radius:10px;
-    margin-top:15px;
-    color:#aaa;
 }
 
 button{
+    margin-top:20px;
     width:100%;
-    margin-top:15px;
     padding:14px;
     border:none;
-    border-radius:14px;
-    background:linear-gradient(90deg,#8f6bff,#6b2cff);
+    border-radius:12px;
+    background:linear-gradient(90deg,#7a00ff,#c66bff);
     color:white;
     font-size:16px;
 }
