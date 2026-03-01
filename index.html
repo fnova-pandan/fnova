@@ -3,93 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fnovaa CV</title>
+<title>FNOVAA CV</title>
 
 <style>
+
 body{
-margin:0;
-font-family:Segoe UI;
-background: radial-gradient(circle at top,#1e1b4b,#020617);
-display:flex;
-align-items:center;
-justify-content:center;
-height:100vh;
-color:white;
+    margin:0;
+    font-family:sans-serif;
+    background: linear-gradient(180deg,#1a0033,#000);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
 }
 
 .card{
-background: rgba(30,41,59,0.65);
-backdrop-filter: blur(12px);
-border-radius:20px;
-padding:25px;
-width:90%;
-max-width:340px;
-box-shadow:0 0 30px rgba(59,130,246,0.25);
+    width:340px;
+    background:#1e293b;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 0 25px rgba(255,215,0,0.2);
 }
 
 .title{
-text-align:center;
-font-size:24px;
-color:#60a5fa;
-margin-bottom:20px;
-}
-
-.field{
-margin-bottom:14px;
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    color:#ffd700;
+    margin-bottom:15px;
 }
 
 label{
-font-size:13px;
-opacity:0.7;
+    font-size:14px;
+    opacity:0.8;
 }
 
 select,input{
-width:100%;
-height:46px;
-padding:0 12px;
-border-radius:12px;
-border:1px solid rgba(255,255,255,0.15);
-background: rgba(51,65,85,0.6);
-color:white;
-font-size:15px;
-outline:none;
-appearance:none;
+    width:100%;
+    padding:12px;
+    margin-top:5px;
+    margin-bottom:15px;
+    border-radius:10px;
+    border:2px solid #ffd700;
+    background:#334155;
+    color:white;
+    font-size:16px;
 }
 
-.result{
-background: rgba(2,6,23,0.7);
-padding:18px;
-border-radius:14px;
-text-align:center;
-margin-bottom:14px;
+.result-box{
+    background:#0f172a;
+    padding:15px;
+    border-radius:15px;
+    text-align:center;
+    margin-top:10px;
 }
 
-.result h2{
-margin:0;
-color:#22c55e;
-font-size:26px;
+.hasil{
+    font-size:28px;
+    color:#22c55e;
+    font-weight:bold;
 }
 
-.uidbox{
-background: rgba(2,6,23,0.8);
-padding:14px;
-border-radius:12px;
-text-align:center;
-margin-bottom:15px;
-font-size:14px;
+.fee{
+    margin-top:5px;
+    font-size:14px;
+    opacity:0.8;
+}
+
+.kirim{
+    margin-top:10px;
+    font-size:14px;
+}
+
+.uid-box{
+    background:#020617;
+    padding:12px;
+    border-radius:12px;
+    margin-top:15px;
+    text-align:center;
 }
 
 button{
-width:100%;
-height:48px;
-border-radius:14px;
-border:none;
-background: linear-gradient(90deg,#3b82f6,#60a5fa);
-color:white;
-font-weight:bold;
-font-size:15px;
-cursor:pointer;
+    width:100%;
+    margin-top:15px;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#ffd700;
+    color:black;
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
 }
+
 </style>
 </head>
 
@@ -97,9 +104,8 @@ cursor:pointer;
 
 <div class="card">
 
-<div class="title">Fnovaa CV</div>
+<div class="title">💵 Corneas Convert</div>
 
-<div class="field">
 <label>Pilih Exchange</label>
 <select id="exchange">
 <option value="">-- Pilih --</option>
@@ -109,427 +115,28 @@ cursor:pointer;
 <option value="TOKOCRYPTO">🟢 TOKOCRYPTO</option>
 <option value="MEXC">💠 MEXC</option>
 </select>
-</div>
-
-<div class="field">
-<label>Nominal (USDT)</label>
-<input type="number" id="usdt" placeholder="Masukkan USDT">
-</div>
-
-<div class="result">
-<h2 id="hasil">Rp 0</h2>
-<div>Fee: Rp <span id="fee">0</span></div>
-<div style="margin-top:5px">Silakan kirim <b><span id="kirim">0</span> USDT</b></div>
-</div>
-
-<div class="uidbox">
-UID: <span id="uid">-</span><br>
-USN: FNOVA
-</div>
-
-<button id="btn">Saya Sudah Transfer</button>
-
-</div>
-
-<script>
-
-// RATE FIX
-const rate = 16500;
-
-// UID
-const accounts = {
-"BINANCE":"1179095398",
-"OKX":"775966960717997987",
-"GATE IO":"47713970",
-"TOKOCRYPTO":"5030322",
-"MEXC":"06341119"
-};
-
-const usdtInput = document.getElementById("usdt");
-const exchange = document.getElementById("exchange");
-const hasil = document.getElementById("hasil");
-const feeEl = document.getElementById("fee");
-const uidEl = document.getElementById("uid");
-const kirim = document.getElementById("kirim");
-
-// FORMAT
-function format(n){
-return Math.round(n).toLocaleString("id-ID");
-}
-
-// FEE RULE
-function getFee(usdt){
-let block = Math.ceil(usdt/3);
-return 2000 + (block-1)*500;
-}
-
-// UPDATE
-function update(){
-let usdt = parseFloat(usdtInput.value);
-if(!usdt){
-hasil.innerText="Rp 0";
-feeEl.innerText="0";
-kirim.innerText="0";
-return;
-}
-
-let kotor = usdt * rate;
-let fee = getFee(usdt);
-let bersih = kotor - fee;
-
-hasil.innerText = "Rp " + format(bersih);
-feeEl.innerText = format(fee);
-kirim.innerText = usdt;
-}
-
-usdtInput.addEventListener("input", update);
-
-// UID UPDATE
-exchange.addEventListener("change", ()=>{
-uidEl.innerText = accounts[exchange.value] || "-";
-});
-
-// BUTTON
-document.getElementById("btn").addEventListener("click", ()=>{
-
-let usdt = usdtInput.value;
-let ex = exchange.value;
-
-if(!usdt || !ex){
-alert("Isi nominal & pilih exchange dulu");
-return;
-}
-
-let detail =
-`Exchange: ${ex}
-Nominal: ${usdt} USDT
-Hasil: ${hasil.innerText}
-Fee: Rp ${feeEl.innerText}`;
-
-navigator.clipboard.writeText(detail);
-window.open("https://m.me/100077369057743","_blank");
-
-});
-</script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fnovaa CV</title>
-
-<style>
-body{
-margin:0;
-font-family:Segoe UI;
-background: radial-gradient(circle at top,#1e1b4b,#020617);
-display:flex;
-align-items:center;
-justify-content:center;
-height:100vh;
-color:white;
-}
-
-.card{
-background: rgba(30,41,59,0.65);
-backdrop-filter: blur(12px);
-border-radius:20px;
-padding:25px;
-width:90%;
-max-width:340px;
-box-shadow:0 0 30px rgba(59,130,246,0.25);
-}
-
-.title{
-text-align:center;
-font-size:24px;
-color:#60a5fa;
-margin-bottom:20px;
-}
-
-.field{
-margin-bottom:14px;
-}
-
-label{
-font-size:13px;
-opacity:0.7;
-}
-
-select,input{
-width:100%;
-height:46px;
-padding:0 12px;
-border-radius:12px;
-border:1px solid rgba(255,255,255,0.15);
-background: rgba(51,65,85,0.6);
-color:white;
-font-size:15px;
-outline:none;
-appearance:none;
-}
-
-.result{
-background: rgba(2,6,23,0.7);
-padding:18px;
-border-radius:14px;
-text-align:center;
-margin-bottom:14px;
-}
-
-.result h2{
-margin:0;
-color:#22c55e;
-font-size:26px;
-}
-
-.uidbox{
-background: rgba(2,6,23,0.8);
-padding:14px;
-border-radius:12px;
-text-align:center;
-margin-bottom:15px;
-font-size:14px;
-}
-
-button{
-width:100%;
-height:48px;
-border-radius:14px;
-border:none;
-background: linear-gradient(90deg,#3b82f6,#60a5fa);
-color:white;
-font-weight:bold;
-font-size:15px;
-cursor:pointer;
-}
-</style>
-</head>
-
-<body>
-
-<div class="card">
-
-<div class="title">Fnovaa CV</div>
-
-<div class="field">
-<label>Pilih Exchange</label>
-<select id="exchange">
-<option value="">-- Pilih --</option>
-<option value="BINANCE">🔶 BINANCE</option>
-<option value="OKX">🔷 OKX</option>
-<option value="GATE IO">🔵 GATE IO</option>
-<option value="TOKOCRYPTO">🟢 TOKOCRYPTO</option>
-<option value="MEXC">💠 MEXC</option>
-</select>
-</div>
-
-<div class="field">
-<label>Nominal (USDT)</label>
-<input type="number" id="usdt" placeholder="Masukkan USDT">
-</div>
-
-<div class="result">
-<h2 id="hasil">Rp 0</h2>
-<div>Fee: Rp <span id="fee">0</span></div>
-<div style="margin-top:5px">Silakan kirim <b><span id="kirim">0</span> USDT</b></div>
-</div>
-
-<div class="uidbox">
-UID: <span id="uid">-</span><br>
-USN: FNOVA
-</div>
-
-<button id="btn">Saya Sudah Transfer</button>
-
-</div>
-
-<script>
-
-// RATE FIX
-const rate = 16500;
-
-// UID
-const accounts = {
-"BINANCE":"1179095398",
-"OKX":"775966960717997987",
-"GATE IO":"47713970",
-"TOKOCRYPTO":"5030322",
-"MEXC":"06341119"
-};
-
-const usdtInput = document.getElementById("usdt");
-const exchange = document.getElementById("exchange");
-const hasil = document.getElementById("hasil");
-const feeEl = document.getElementById("fee");
-const uidEl = document.getElementById("uid");
-const kirim = document.getElementById("kirim");
-
-// FORMAT
-function format(n){
-return Math.round(n).toLocaleString("id-ID");
-}
-
-// FEE RULE
-function getFee(usdt){
-let block = Math.ceil(usdt/3);
-return 2000 + (block-1)*500;
-}
-
-// UPDATE
-function update(){
-let usdt = parseFloat(usdtInput.value);
-if(!usdt){
-hasil.innerText="Rp 0";
-feeEl.innerText="0";
-kirim.innerText="0";
-return;
-}
-
-let kotor = usdt * rate;
-let fee = getFee(usdt);
-let bersih = kotor - fee;
-
-hasil.innerText = "Rp " + format(bersih);
-feeEl.innerText = format(fee);
-kirim.innerText = usdt;
-}
-
-usdtInput.addEventListener("input", update);
-
-// UID UPDATE
-exchange.addEventListener("change", ()=>{
-uidEl.innerText = accounts[exchange.value] || "-";
-});
-
-// BUTTON
-document.getElementById("btn").addEventListener("click", ()=>{
-
-let usdt = usdtInput.value;
-let ex = exchange.value;
-
-if(!usdt || !ex){
-alert("Isi nominal & pilih exchange dulu");
-return;
-}
-
-let detail =
-`Exchange: ${ex}
-Nominal: ${usdt} USDT
-Hasil: ${hasil.innerText}
-Fee: Rp ${feeEl.innerText}`;
-
-navigator.clipboard.writeText(detail);
-window.open("https://m.me/100077369057743","_blank");
-
-});
-</script>
-
-</body>
-</html><option value="MEXC">MEXC</option>
-</select>
 
 <label>Nominal (USDT)</label>
 <input type="number" id="usdt" placeholder="Masukkan USDT">
 
-<div class="result">
-<h2 id="hasil">Rp 0</h2>
+<div class="result-box">
+<div class="hasil">Rp <span id="bersih">0</span></div>
 <div class="fee">Fee: Rp <span id="fee">0</span></div>
-<div style="margin-top:5px">Silakan kirim <b><span id="kirim">0</span> USDT</b></div>
+<div class="kirim">
+Silakan kirim <b><span id="usdtText">0</span> USDT</b>
+</div>
 </div>
 
-<div class="uidbox">
+<div class="uid-box">
 UID: <span id="uid">-</span><br>
-USN: FNOVA
+USN: <span id="usn">FNOVA</span>
 </div>
 
 <button id="btn">Saya Sudah Transfer</button>
 
 </div>
 
-<script>
-
-// RATE FIX
-const rate = 16500;
-
-// ACCOUNTS
-const accounts = {
-"BINANCE":"1179095398",
-"OKX":"775966960717997987",
-"GATE IO":"47713970",
-"TOKOCRYPTO":"5030322",
-"MEXC":"06341119"
-};
-
-// ELEMENTS
-const usdtInput = document.getElementById("usdt");
-const exchange = document.getElementById("exchange");
-const hasil = document.getElementById("hasil");
-const feeEl = document.getElementById("fee");
-const uidEl = document.getElementById("uid");
-const kirim = document.getElementById("kirim");
-
-// FORMAT
-function format(n){
-return Math.round(n).toLocaleString("id-ID");
-}
-
-// FEE RULE
-function getFee(usdt){
-let block = Math.ceil(usdt/3);
-return 2000 + (block-1)*500;
-}
-
-// UPDATE
-function update(){
-let usdt = parseFloat(usdtInput.value);
-if(!usdt){ hasil.innerText="Rp 0"; feeEl.innerText="0"; kirim.innerText="0"; return; }
-
-let kotor = usdt * rate;
-let fee = getFee(usdt);
-let bersih = kotor - fee;
-
-hasil.innerText = "Rp " + format(bersih);
-feeEl.innerText = format(fee);
-kirim.innerText = usdt;
-}
-
-usdtInput.addEventListener("input", update);
-
-// UID
-exchange.addEventListener("change", ()=>{
-uidEl.innerText = accounts[exchange.value] || "-";
-});
-
-// BUTTON
-document.getElementById("btn").addEventListener("click", ()=>{
-
-let usdt = usdtInput.value;
-let ex = exchange.value;
-
-if(!usdt || !ex){
-alert("Isi nominal & pilih exchange dulu");
-return;
-}
-
-let detail =
-`Exchange: ${ex}
-Nominal: ${usdt} USDT
-Hasil: ${hasil.innerText}
-Fee: Rp ${feeEl.innerText}`;
-
-// COPY DETAIL ONLY
-navigator.clipboard.writeText(detail);
-
-// OPEN MESSENGER
-window.open("https://m.me/100077369057743","_blank");
-
-});
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
-
