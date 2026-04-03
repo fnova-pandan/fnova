@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", ()=>{
 
-const rate = 16600;
+const rate = 16570;
 
 const accounts = {
 "BINANCE":"1179095398",
@@ -26,7 +26,7 @@ return Math.round(n).toLocaleString("id-ID");
 function getFee(usdt){
 if(!usdt || usdt <= 0) return 0;
 let block = Math.ceil(usdt/2);
-return 1500 + (block-1)*300;
+return 1700 + (block-1)*300;
 }
 
 // ANIMASI
