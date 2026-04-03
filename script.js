@@ -117,6 +117,27 @@ alert("Isi nominal & pilih exchange dulu");
 return;
 }
 
+// ambil hasil
+let hasilText = hasil.innerText;
+
+// format pesan
+let detail =
+`Halo Fn Corneas 👋
+
+Saya sudah transfer USDT
+
+Exchange: ${ex}
+IDR Bersih: ${hasilText}`;
+
+// COPY KE CLIPBOARD
+navigator.clipboard.writeText(detail);
+
+// DELAY BIAR AMAN (biar sempat ke-copy)
+setTimeout(()=>{
+window.location.href = "https://m.me/100077369057743";
+}, 300);
+
+});
 // langsung redirect (tidak diblok browser)
 window.location.href = "https://m.me/100077369057743";
 
