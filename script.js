@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", ()=>{
 
-// ==========================
 // CONFIG
-// ==========================
 const rate = 16600;
 
 const accounts = {
@@ -15,33 +13,25 @@ const accounts = {
 "BITGET":"3931932762"
 };
 
-// ==========================
 // ELEMENT
-// ==========================
 const usdtInput = document.getElementById("usdt");
 const exchange = document.getElementById("exchange");
 const hasil = document.getElementById("hasil");
 const uidEl = document.getElementById("uid");
 
-// ==========================
 // FORMAT
-// ==========================
 function format(n){
 return Math.round(n).toLocaleString("id-ID");
 }
 
-// ==========================
 // FEE
-// ==========================
 function getFee(usdt){
 if(!usdt || usdt <= 0) return 0;
 let block = Math.ceil(usdt/2);
 return 1350 + (block-1)*300;
 }
 
-// ==========================
-// COUNT UP (FIXED)
-// ==========================
+// ANIMASI
 let lastValue = 0;
 
 function animateValue(end){
@@ -62,18 +52,15 @@ hasil.innerText = "Rp " + format(value);
 if(progress < duration){
 requestAnimationFrame(step);
 } else {
-lastValue = end; // simpan value terakhir
+lastValue = end;
 }
 }
 
 requestAnimationFrame(step);
 }
 
-// ==========================
 // UPDATE
-// ==========================
 function update(){
-
 let usdt = parseFloat(usdtInput.value);
 
 if(!usdt){
@@ -86,27 +73,20 @@ let kotor = usdt * rate;
 let fee = getFee(usdt);
 let bersih = kotor - fee;
 
-// jalankan animasi
 animateValue(bersih);
 }
 
-// ==========================
-// EVENTS (ANTI BUG HP)
-// ==========================
+// EVENTS
 usdtInput.addEventListener("input", update);
 usdtInput.addEventListener("keyup", update);
 usdtInput.addEventListener("change", update);
 
-// ==========================
 // UID
-// ==========================
 exchange.addEventListener("change", ()=>{
 uidEl.innerText = accounts[exchange.value] || "-";
 });
 
-// ==========================
-// BUTTON FIX (NO STUCK)
-// ==========================
+// BUTTON (SIMPLE & STABLE)
 document.getElementById("btn").addEventListener("click", ()=>{
 
 let usdt = usdtInput.value;
@@ -117,56 +97,6 @@ alert("Isi nominal & pilih exchange dulu");
 return;
 }
 
-// ambil hasil
-let hasilText = hasil.innerText;
-
-// format pesan
-let detail =
-`Halo Fn Corneas 👋
-
-Saya sudah transfer USDT
-
-Exchange: ${ex}
-IDR Bersih: ${hasilText}`;
-
-// ==========================
-// COPY FIX (PASTI WORK HP)
-// ==========================
-const textarea = document.createElement("textarea");
-textarea.value = detail;
-document.body.appendChild(textarea);
-
-textarea.select();
-textarea.setSelectionRange(0, 99999);
-
-document.execCommand("copy");
-
-document.body.removeChild(textarea);
-
-// ==========================
-// OPTIONAL NOTIF
-// ==========================
-alert("Pesan berhasil disalin 👍");
-
-// ==========================
-// REDIRECT
-// ==========================
-setTimeout(()=>{
-window.location.href = "https://m.me/100077369057743";
-}, 300);
-
-});
-
-// COPY KE CLIPBOARD
-navigator.clipboard.writeText(detail);
-
-// DELAY BIAR AMAN (biar sempat ke-copy)
-setTimeout(()=>{
-window.location.href = "https://m.me/100077369057743";
-}, 300);
-
-});
-// langsung redirect (tidak diblok browser)
 window.location.href = "https://m.me/100077369057743";
 
 });
