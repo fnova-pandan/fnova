@@ -32,6 +32,8 @@ margin-bottom:20px;
 label{
 font-size:13px;
 opacity:.7;
+display:block;
+margin-bottom:5px;
 }
 
 select,input{
