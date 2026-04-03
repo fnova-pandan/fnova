@@ -1,11 +1,5 @@
-// ==========================
-// INIT
-// ==========================
 document.addEventListener("DOMContentLoaded", ()=>{
 
-// ==========================
-// CONFIG
-// ==========================
 const rate = 16605;
 
 const accounts = {
@@ -18,47 +12,44 @@ const accounts = {
     "BITGET": { uid: "3931932762", usn: "FNOVA" }
 };
 
-// ==========================
 // ELEMENT
-// ==========================
 const usdtInput = document.getElementById("usdt");
 const exchange = document.getElementById("exchange");
 
-const bersihEl = document.getElementById("hasil");
+const hasil = document.getElementById("hasil");
 const feeEl = document.getElementById("fee");
 const uidEl = document.getElementById("uid");
 const usnEl = document.getElementById("usn");
-const usdtText = document.getElementById("kirim");
+const kirim = document.getElementById("kirim");
 
 const btn = document.getElementById("btn");
 
-// ==========================
+// SAFETY CHECK
+if(!usdtInput || !exchange || !hasil){
+    console.error("ELEMENT TIDAK DITEMUKAN");
+    return;
+}
+
 // FORMAT
-// ==========================
 function format(n){
     return Math.round(n).toLocaleString("id-ID");
 }
 
-// ==========================
 // FEE
-// ==========================
 function getFee(usdt){
     if(!usdt || usdt <= 0) return 0;
     let block = Math.ceil(usdt / 3);
     return 2000 + ((block - 1) * 250);
 }
 
-// ==========================
 // UPDATE
-// ==========================
 function update(){
-
     const usdt = parseFloat(usdtInput.value);
 
     if(!usdt || usdt <= 0){
-        bersihEl.innerText = "Rp 0";
+        hasil.innerText = "Rp 0";
         feeEl.innerText = "0";
-        usdtText.innerText = "0";
+        kirim.innerText = "0";
         return;
     }
 
@@ -66,33 +57,29 @@ function update(){
     const fee = getFee(usdt);
     const bersih = kotor - fee;
 
-    bersihEl.innerText = "Rp " + format(bersih);
+    hasil.innerText = "Rp " + format(bersih);
     feeEl.innerText = format(fee);
-    usdtText.innerText = usdt;
+    kirim.innerText = usdt;
 }
 
-// ==========================
-// EVENTS
-// ==========================
+// EVENT INPUT
 usdtInput.addEventListener("input", update);
 
+// EVENT EXCHANGE
 exchange.addEventListener("change", ()=>{
     const ex = exchange.value;
 
     if(accounts[ex]){
         uidEl.innerText = accounts[ex].uid;
-        usnEl.innerText = accounts[ex].usn;
+        if(usnEl) usnEl.innerText = accounts[ex].usn;
     } else {
         uidEl.innerText = "-";
-        usnEl.innerText = "-";
+        if(usnEl) usnEl.innerText = "-";
     }
 });
 
-// ==========================
 // BUTTON
-// ==========================
 btn.addEventListener("click", ()=>{
-
     const usdt = usdtInput.value;
     const ex = exchange.value;
 
@@ -102,13 +89,16 @@ btn.addEventListener("click", ()=>{
     }
 
     const detail =
-`Halo FNOVAA CV 👋
-
-Exchange: ${ex}
+`Exchange: ${ex}
 Nominal: ${usdt} USDT
-Fee: Rp ${feeEl.innerText}
-IDR Bersih: ${bersihEl.innerText}`;
+Hasil: ${hasil.innerText}
+Fee: Rp ${feeEl.innerText}`;
 
+    navigator.clipboard.writeText(detail);
+    window.open("https://m.me/100077369057743", "_blank");
+});
+
+});
     navigator.clipboard.writeText(detail);
 
     window.open("https://m.me/100077369057743", "_blank");
