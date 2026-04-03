@@ -1,3 +1,4 @@
+alert("JS KELOAD");
 document.addEventListener("DOMContentLoaded", ()=>{
 
 const rate = 16550;
