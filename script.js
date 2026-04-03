@@ -1,7 +1,12 @@
 // ==========================
+// INIT (biar nunggu HTML siap)
+// ==========================
+document.addEventListener("DOMContentLoaded", ()=>{
+
+// ==========================
 // CONFIG
 // ==========================
-const rate = 16600;
+const rate = 16605;
 
 const accounts = {
     "BINANCE": { uid: "1179095398", usn: "FNOVA" },
@@ -14,18 +19,21 @@ const accounts = {
 };
 
 // ==========================
-// ELEMENT
+// ELEMENT (AMBIL SETELAH LOAD)
 // ==========================
 const usdtInput = document.getElementById("usdt");
 const exchange = document.getElementById("exchange");
 
-const bersihEl = document.getElementById("bersih");
+const bersihEl = document.getElementById("hasil");   // ← SESUAI HTML KAMU
 const feeEl = document.getElementById("fee");
 const uidEl = document.getElementById("uid");
 const usnEl = document.getElementById("usn");
-const usdtText = document.getElementById("usdtText");
+const usdtText = document.getElementById("kirim");   // ← SESUAI HTML KAMU
 
 const btn = document.getElementById("btn");
+
+// DEBUG
+console.log("INIT:", usdtInput, bersihEl);
 
 // ==========================
 // FORMAT
@@ -35,28 +43,23 @@ function format(n){
 }
 
 // ==========================
-// FEE SYSTEM (250 per 3 USDT)
+// FEE
 // ==========================
 function getFee(usdt){
-
     if(!usdt || usdt <= 0) return 0;
-
     let block = Math.ceil(usdt / 3);
-
-    let fee = 2000 + ((block - 1) * 250);
-
-    return fee;
+    return 2000 + ((block - 1) * 250);
 }
 
 // ==========================
-// CALCULATE
+// UPDATE
 // ==========================
 function update(){
 
     const usdt = parseFloat(usdtInput.value);
 
     if(!usdt || usdt <= 0){
-        bersihEl.innerText = "0";
+        bersihEl.innerText = "Rp 0";
         feeEl.innerText = "0";
         usdtText.innerText = "0";
         return;
@@ -66,9 +69,10 @@ function update(){
     const fee = getFee(usdt);
     const bersih = kotor - fee;
 
-    bersihEl.innerText = format(bersih);
+    bersihEl.innerText = "Rp " + format(bersih);
     feeEl.innerText = format(fee);
     usdtText.innerText = usdt;
+
 }
 
 // ==========================
@@ -77,7 +81,6 @@ function update(){
 usdtInput.addEventListener("input", update);
 
 exchange.addEventListener("change", ()=>{
-
     const ex = exchange.value;
 
     if(accounts[ex]){
@@ -87,11 +90,10 @@ exchange.addEventListener("change", ()=>{
         uidEl.innerText = "-";
         usnEl.innerText = "-";
     }
-
 });
 
 // ==========================
-// BUTTON → COPY DETAIL + OPEN FB
+// BUTTON
 // ==========================
 btn.addEventListener("click", ()=>{
 
@@ -103,12 +105,20 @@ btn.addEventListener("click", ()=>{
         return;
     }
 
-    const fee = feeEl.innerText;
-    const bersih = bersihEl.innerText;
-
     const detail =
 `Halo FNOVAA CV 👋
 
+Exchange: ${ex}
+Nominal: ${usdt} USDT
+Fee: Rp ${feeEl.innerText}
+IDR Bersih: ${bersihEl.innerText}`;
+
+    navigator.clipboard.writeText(detail);
+    window.open("https://m.me/100077369057743", "_blank");
+
+});
+
+});
 Saya sudah transfer USDT 💸
 
 📌 Detail:
