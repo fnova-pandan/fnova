@@ -49,7 +49,9 @@ feeEl.innerText = format(fee);
 kirim.innerText = usdt;
 }
 
-usdtInput.addEventListener("input", update);
+usdt.addEventListener("input", update);
+usdt.addEventListener("keyup", update);
+usdt.addEventListener("change", update);
 
 exchange.addEventListener("change", ()=>{
 uidEl.innerText = accounts[exchange.value] || "-";
