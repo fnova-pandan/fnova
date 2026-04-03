@@ -1,5 +1,5 @@
 // ==========================
-// INIT (biar nunggu HTML siap)
+// INIT
 // ==========================
 document.addEventListener("DOMContentLoaded", ()=>{
 
@@ -19,21 +19,18 @@ const accounts = {
 };
 
 // ==========================
-// ELEMENT (AMBIL SETELAH LOAD)
+// ELEMENT
 // ==========================
 const usdtInput = document.getElementById("usdt");
 const exchange = document.getElementById("exchange");
 
-const bersihEl = document.getElementById("hasil");   // ← SESUAI HTML KAMU
+const bersihEl = document.getElementById("hasil");
 const feeEl = document.getElementById("fee");
 const uidEl = document.getElementById("uid");
 const usnEl = document.getElementById("usn");
-const usdtText = document.getElementById("kirim");   // ← SESUAI HTML KAMU
+const usdtText = document.getElementById("kirim");
 
 const btn = document.getElementById("btn");
-
-// DEBUG
-console.log("INIT:", usdtInput, bersihEl);
 
 // ==========================
 // FORMAT
@@ -72,7 +69,6 @@ function update(){
     bersihEl.innerText = "Rp " + format(bersih);
     feeEl.innerText = format(fee);
     usdtText.innerText = usdt;
-
 }
 
 // ==========================
@@ -109,6 +105,17 @@ btn.addEventListener("click", ()=>{
 `Halo FNOVAA CV 👋
 
 Exchange: ${ex}
+Nominal: ${usdt} USDT
+Fee: Rp ${feeEl.innerText}
+IDR Bersih: ${bersihEl.innerText}`;
+
+    navigator.clipboard.writeText(detail);
+
+    window.open("https://m.me/100077369057743", "_blank");
+
+});
+
+});Exchange: ${ex}
 Nominal: ${usdt} USDT
 Fee: Rp ${feeEl.innerText}
 IDR Bersih: ${bersihEl.innerText}`;
