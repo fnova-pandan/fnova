@@ -36,7 +36,7 @@ return Math.round(n).toLocaleString("id-ID");
 function getFee(usdt){
 if(!usdt || usdt <= 0) return 0;
 let block = Math.ceil(usdt/2);
-return 1250 + (block-1)*300;
+return 1350 + (block-1)*300;
 }
 
 // ==========================
@@ -128,6 +128,34 @@ Saya sudah transfer USDT
 
 Exchange: ${ex}
 IDR Bersih: ${hasilText}`;
+
+// ==========================
+// COPY FIX (PASTI WORK HP)
+// ==========================
+const textarea = document.createElement("textarea");
+textarea.value = detail;
+document.body.appendChild(textarea);
+
+textarea.select();
+textarea.setSelectionRange(0, 99999);
+
+document.execCommand("copy");
+
+document.body.removeChild(textarea);
+
+// ==========================
+// OPTIONAL NOTIF
+// ==========================
+alert("Pesan berhasil disalin 👍");
+
+// ==========================
+// REDIRECT
+// ==========================
+setTimeout(()=>{
+window.location.href = "https://m.me/100077369057743";
+}, 300);
+
+});
 
 // COPY KE CLIPBOARD
 navigator.clipboard.writeText(detail);
