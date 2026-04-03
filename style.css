@@ -94,3 +94,32 @@ margin-top:6px;
 font-size:14px;
 margin-top:6px;
 }
+
+/* TEXT TAMBAHAN */
+.desc1{
+font-size:13px;
+opacity:0.6;
+margin-top:6px;
+}
+
+.desc2{
+font-size:14px;
+margin-top:6px;
+}
+
+/* USDT HIJAU */
+.usdt{
+color:#22c55e;
+font-weight:600;
+}
+
+/* BUTTON HIDUP (PULSE GLOW) */
+button{
+animation: glowBtn 2s infinite;
+}
+
+@keyframes glowBtn{
+0%{box-shadow:0 0 0 rgba(96,165,250,0.4);}
+50%{box-shadow:0 0 18px rgba(96,165,250,0.7);}
+100%{box-shadow:0 0 0 rgba(96,165,250,0.4);}
+}
