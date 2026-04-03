@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", ()=>{
 
-const rate = 16500;
+const rate = 16600;
 
 const accounts = {
 "BINANCE":"1179095398",
@@ -25,7 +25,7 @@ return Math.round(n).toLocaleString("id-ID");
 
 function getFee(usdt){
 let block = Math.ceil(usdt/3);
-return 2000 + (block-1)*250;
+return 1000 + (block-1)*150;
 }
 
 function update(){
