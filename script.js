@@ -1,14 +1,16 @@
 // ==========================
 // CONFIG
 // ==========================
-const rate = 16610;
+const rate = 16600;
 
 const accounts = {
     "BINANCE": { uid: "1179095398", usn: "FNOVA" },
     "OKX": { uid: "775966960717997987", usn: "FNOVA" },
     "GATE IO": { uid: "47713970", usn: "FNOVA" },
-    "TOKOCRYPTO": { uid: "5030322", usn: "FNOVA" },
-    "MEXC": { uid: "06341119", usn: "FNOVA" }
+    "TOKOCRYPTO": { uid: "5156565", usn: "FNOVA" },
+    "MEXC": { uid: "06341119", usn: "FNOVA" },
+    "BYBIT": { uid: "549353357", usn: "FNOVA" },
+    "BITGET": { uid: "3931932762", usn: "FNOVA" }
 };
 
 // ==========================
@@ -33,7 +35,7 @@ function format(n){
 }
 
 // ==========================
-// FEE SYSTEM
+// FEE SYSTEM (250 per 3 USDT)
 // ==========================
 function getFee(usdt){
 
@@ -41,7 +43,7 @@ function getFee(usdt){
 
     let block = Math.ceil(usdt / 3);
 
-    let fee = 2000 + ((block - 1) * 500);
+    let fee = 2000 + ((block - 1) * 250);
 
     return fee;
 }
@@ -105,6 +107,23 @@ btn.addEventListener("click", ()=>{
     const bersih = bersihEl.innerText;
 
     const detail =
+`Halo FNOVAA CV 👋
+
+Saya sudah transfer USDT 💸
+
+📌 Detail:
+🏦 Exchange: ${ex}
+💲 Nominal: ${usdt} USDT
+🧾 Fee: Rp ${fee}
+✅ IDR Bersih: Rp ${bersih}
+
+Mohon dicek ya 🙏`;
+
+    navigator.clipboard.writeText(detail);
+
+    window.open("https://m.me/100077369057743", "_blank");
+
+});    const detail =
 `Halo FNOVAA CV 👋
 
 Saya sudah transfer USDT
