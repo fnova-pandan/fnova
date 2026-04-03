@@ -2,11 +2,11 @@ body{
 margin:0;
 font-family:'Poppins',sans-serif;
 background: radial-gradient(circle at top,#1e1b4b,#020617);
-display:flex;
-align-items:center;
-justify-content:center;
-height:100vh;
 color:white;
+
+/* FIX UTAMA */
+display:block;
+padding:20px;
 }
 
 .card{
