@@ -3,61 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TEST FNOVAA</title>
+<title>Fnovaa CV</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h3>Test Convert</h3>
+<div class="card">
 
+<div class="title">Fnovaa CV</div>
+
+<div class="field">
+<label>Pilih Exchange</label>
 <select id="exchange">
 <option value="">-- Pilih --</option>
-<option value="BINANCE">BINANCE</option>
-<option value="OKX">OKX</option>
+<option value="BINANCE">🔶 BINANCE</option>
+<option value="OKX">🔷 OKX</option>
+<option value="GATE IO">🔵 GATE IO</option>
+<option value="TOKOCRYPTO">🟢 TOKOCRYPTO</option>
+<option value="MEXC">💠 MEXC</option>
+<option value="BYBIT">🟡 BYBIT</option>
+<option value="BITGET">⚫ BITGET</option>
 </select>
+</div>
 
-<br><br>
+<div class="field">
+<label>Nominal (USDT)</label>
+<input type="text" inputmode="numeric" id="usdt" placeholder="Masukkan USDT">
+</div>
 
-<input id="usdt" placeholder="ketik angka">
+<div class="result">
+<h2 id="hasil">Rp 0</h2>
+<div>Fee: Rp <span id="fee">0</span></div>
+<div>Silakan kirim <b><span id="kirim">0</span> USDT</b></div>
+</div>
 
-<p id="hasil">Rp 0</p>
-<p id="uid">UID: -</p>
+<div class="uidbox">
+UID: <span id="uid">-</span><br>
+USN: FNOVA
+</div>
 
-<script>
-window.onload = function(){
+<button id="btn">Saya Sudah Transfer</button>
 
-console.log("JS HIDUP");
-
-// DATA
-const rate = 16500;
-const accounts = {
-  BINANCE: "1179095398",
-  OKX: "775966960717997987"
-};
-
-// ELEMENT
-const usdt = document.getElementById("usdt");
-const hasil = document.getElementById("hasil");
-const uid = document.getElementById("uid");
-const exchange = document.getElementById("exchange");
-
-// INPUT TEST
-usdt.addEventListener("input", function(){
-  let val = parseFloat(this.value);
-  if(!val){
-    hasil.innerText = "Rp 0";
-    return;
-  }
-  hasil.innerText = "Rp " + (val * rate);
-});
-
-// EXCHANGE TEST
-exchange.addEventListener("change", function(){
-  uid.innerText = "UID: " + (accounts[this.value] || "-");
-});
-
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
