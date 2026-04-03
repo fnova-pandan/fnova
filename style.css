@@ -6,32 +6,33 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
+margin:0;
+font-family:'Poppins',sans-serif;
 background: radial-gradient(circle at top,#1e1b4b,#020617);
 color:white;
 
-/* FIX CENTER & NO OVERFLOW */
+/* FIX UTAMA */
 min-height:100vh;
 display:flex;
 justify-content:center;
-align-items:flex-start;
-padding:16px;
+align-items:flex-start; /* ⛔ jangan center */
+padding-top:40px;       /* ⬅️ ini kunci biar ga nempel atas */
 }
 
-/* WRAPPER FIX */
+/* WRAPPER */
 .wrapper{
 width:100%;
 max-width:360px;
-margin:auto;
 }
 
-/* CARD FIX */
+/* CARD */
 .card{
 width:100%;
 background: rgba(30,41,59,0.65);
 backdrop-filter: blur(12px);
-border-radius:18px;
-padding:16px;
-box-shadow:0 0 18px rgba(59,130,246,0.2);
+border-radius:20px;
+padding:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.5); /* ⛔ ganti shadow */
 }
 
 /* TITLE */
