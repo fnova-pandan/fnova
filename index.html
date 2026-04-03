@@ -11,50 +11,55 @@
 
 <body>
 
-<div class="card">
+<div class="wrapper">
 
-<div class="title">Fn Corneas CV</div>
+  <div class="card">
 
-<div class="field">
-<label>Pilih Exchange</label>
-<select id="exchange">
-<option value="">-- Pilih --</option>
-<option value="BINANCE">🔶 BINANCE</option>
-<option value="OKX">🔷 OKX</option>
-<option value="GATE IO">🔵 GATE IO</option>
-<option value="TOKOCRYPTO">🟢 TOKOCRYPTO</option>
-<option value="MEXC">💠 MEXC</option>
-<option value="BYBIT">🟡 BYBIT</option>
-<option value="BITGET">⚫ BITGET</option>
-</select>
+    <div class="title">Fn Corneas CV</div>
+
+    <div class="field">
+      <label>Pilih Exchange</label>
+      <select id="exchange">
+        <option value="">-- Pilih --</option>
+        <option value="BINANCE">🔶 BINANCE</option>
+        <option value="OKX">🔷 OKX</option>
+        <option value="GATE IO">🔵 GATE IO</option>
+        <option value="TOKOCRYPTO">🟢 TOKOCRYPTO</option>
+        <option value="MEXC">💠 MEXC</option>
+        <option value="BYBIT">🟡 BYBIT</option>
+        <option value="BITGET">⚫ BITGET</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Nominal (USDT)</label>
+      <input type="text" inputmode="numeric" id="usdt" placeholder="Masukkan USDT">
+    </div>
+
+    <div class="result">
+      <h2 id="hasil">Rp 0</h2>
+
+      <div class="desc1">Terima Bersih Nominal Diatas</div>
+
+      <div class="desc2">
+        Silahkan Kirim <span class="usdt">USDT</span> ke UID Dibawah
+      </div>
+
+      <div class="desc3">
+        Screenshot saat selesai kirim USDT setelah itu kirim screenshot + norek dengan cara klik tombol <b>Saya Sudah Transfer</b>
+      </div>
+    </div>
+
+    <div class="uidbox">
+      UID: <span id="uid">-</span><br>
+      USN: FNOVA
+    </div>
+
+    <button id="btn">Saya Sudah Transfer</button>
+
+  </div>
+
 </div>
-
-<div class="field">
-<label>Nominal (USDT)</label>
-<input type="text" inputmode="numeric" id="usdt" placeholder="Masukkan USDT">
-</div>
-
-<div class="result">
-<h2 id="hasil">Rp 0</h2>
-
-<div class="desc1">Terima Bersih Nominal Diatas</div>
-
-<div class="desc2">
-Silahkan Kirim <span class="usdt">USDT</span> ke UID Dibawah
-</div>
-
-<div class="desc3">
-Screenshot saat selesai kirim USDT setelah itu kirim screenshot + norek dengan cara klik tombol <b>Saya Sudah Transfer</b>
-</div>
-</div>
-  
-</div>
-<div class="uidbox">
-UID: <span id="uid">-</span><br>
-USN: FNOVA
-</div>
-
-<button id="btn">Saya Sudah Transfer</button>
 
 <script src="script.js"></script>
 </body>
