@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", ()=>{
 
-const rate = 16570;
+const rate = 16600;
 
 const accounts = {
 "BINANCE":"1179095398",
