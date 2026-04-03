@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", ()=>{
 
-// CONFIG
 const rate = 16600;
 
 const accounts = {
@@ -13,7 +12,6 @@ const accounts = {
 "BITGET":"3931932762"
 };
 
-// ELEMENT
 const usdtInput = document.getElementById("usdt");
 const exchange = document.getElementById("exchange");
 const hasil = document.getElementById("hasil");
@@ -24,35 +22,35 @@ function format(n){
 return Math.round(n).toLocaleString("id-ID");
 }
 
-// FEE
+// FEE BARU
 function getFee(usdt){
 if(!usdt || usdt <= 0) return 0;
 let block = Math.ceil(usdt/2);
-return 1350 + (block-1)*300;
+return 1500 + (block-1)*150;
 }
 
 // ANIMASI
-let lastValue = 0;
+let last = 0;
 
-function animateValue(end){
-let start = lastValue;
-let duration = 400;
+function animate(end){
+let start = last;
 let startTime = null;
+let duration = 300;
 
-function step(timestamp){
-if(!startTime) startTime = timestamp;
+function step(t){
+if(!startTime) startTime = t;
 
-let progress = timestamp - startTime;
-let percent = Math.min(progress / duration, 1);
+let progress = t - startTime;
+let percent = Math.min(progress/duration,1);
 
-let value = Math.floor(start + (end - start) * percent);
+let value = Math.floor(start + (end-start)*percent);
 
 hasil.innerText = "Rp " + format(value);
 
 if(progress < duration){
 requestAnimationFrame(step);
-} else {
-lastValue = end;
+}else{
+last = end;
 }
 }
 
@@ -63,9 +61,9 @@ requestAnimationFrame(step);
 function update(){
 let usdt = parseFloat(usdtInput.value);
 
-if(!usdt){
+if(!usdt || usdt <= 0){
 hasil.innerText = "Rp 0";
-lastValue = 0;
+last = 0;
 return;
 }
 
@@ -73,20 +71,20 @@ let kotor = usdt * rate;
 let fee = getFee(usdt);
 let bersih = kotor - fee;
 
-animateValue(bersih);
+animate(bersih);
 }
 
-// EVENTS
+// EVENT
 usdtInput.addEventListener("input", update);
 usdtInput.addEventListener("keyup", update);
 usdtInput.addEventListener("change", update);
 
-// UID
+// UID FIX
 exchange.addEventListener("change", ()=>{
 uidEl.innerText = accounts[exchange.value] || "-";
 });
 
-// BUTTON (SIMPLE & STABLE)
+// BUTTON
 document.getElementById("btn").addEventListener("click", ()=>{
 
 let usdt = usdtInput.value;
