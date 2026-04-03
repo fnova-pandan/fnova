@@ -25,7 +25,7 @@ return Math.round(n).toLocaleString("id-ID");
 
 function getFee(usdt){
 let block = Math.ceil(usdt/3);
-return 1000 + (block-1)*150;
+return 1000 + (block-1)*550;
 }
 
 function update(){
